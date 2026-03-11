@@ -1,0 +1,96 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const SERVER_ADDR = "chur.kr";
+---
+
+<BaseLayout title="츄르월드">
+  <section style="display:grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: center;">
+    <div>
+      <p style="color:#f59e0b; font-weight:700; margin-bottom:8px;">마인크래프트 커뮤니티 서버</p>
+      <h1 style="font-size: clamp(36px, 6vw, 64px); margin: 0 0 16px;">츄르월드</h1>
+      <p style="font-size:18px; color:#cbd5e1; margin:0 0 24px;">
+        편하게 정착하고, 함께 만들고, 오래 즐기는 서버.
+        처음 온 유저도 쉽게 적응할 수 있도록 가이드와 규칙을 깔끔하게 정리했어.
+      </p>
+
+      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:16px;">
+        <button id="copyBtn" class="btn">IP 복사</button>
+        <a class="btn sub" href="/guide">처음 시작하기</a>
+        <a class="btn sub" href="/rules">서버 규칙</a>
+      </div>
+
+      <p style="color:#94a3b8; margin:0;">
+        서버 주소: <strong>{SERVER_ADDR}</strong>
+      </p>
+    </div>
+
+    <div class="card">
+      <p style="margin:0 0 8px; color:#94a3b8;">서버 상태</p>
+      <h2 id="statusText" style="margin:0 0 8px;">불러오는 중...</h2>
+      <p id="playerText" style="margin:0; color:#cbd5e1;">잠시만 기다려줘.</p>
+    </div>
+  </section>
+
+  <section style="margin-top:48px; display:grid; grid-template-columns: repeat(3, 1fr); gap: 20px;">
+    <div class="card">
+      <h3 style="margin-top:0;">쉬운 시작</h3>
+      <p>처음 들어온 유저도 바로 적응할 수 있도록 가이드와 규칙을 정리했어.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;">안정적인 커뮤니티</h3>
+      <p>서버 공지와 안내를 사이트에서 한 번에 확인할 수 있어.</p>
+    </div>
+    <div class="card">
+      <h3 style="margin-top:0;">계속 업데이트</h3>
+      <p>이벤트, 패치노트, 안내사항을 공지 페이지에서 계속 쌓아갈 수 있어.</p>
+    </div>
+  </section>
+
+  <section style="margin-top:48px;" class="card">
+    <h2 style="margin-top:0;">처음 온 사람은 여기부터</h2>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <a class="btn sub" href="/guide">1. 시작 가이드 보기</a>
+      <a class="btn sub" href="/rules">2. 규칙 확인하기</a>
+      <a class="btn sub" href="/notice">3. 최근 공지 보기</a>
+    </div>
+  </section>
+
+  <script>
+    const addr = "chur.kr";
+
+    document.getElementById("copyBtn")?.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(addr);
+        alert("서버 주소가 복사됐어: " + addr);
+      } catch {
+        alert("복사에 실패했어. 직접 복사해줘: " + addr);
+      }
+    });
+
+    async function loadStatus() {
+      const statusText = document.getElementById("statusText");
+      const playerText = document.getElementById("playerText");
+
+      try {
+        const res = await fetch("https://api.mcsrvstat.us/2/" + encodeURIComponent(addr));
+        const data = await res.json();
+
+        if (data.online) {
+          const online = data.players?.online ?? 0;
+          const max = data.players?.max ?? "?";
+          statusText.textContent = "온라인";
+          playerText.textContent = `현재 접속 인원: ${online}/${max}`;
+        } else {
+          statusText.textContent = "오프라인";
+          playerText.textContent = "현재 서버에 접속할 수 없거나 상태 정보를 불러오지 못했어.";
+        }
+      } catch {
+        statusText.textContent = "확인 불가";
+        playerText.textContent = "상태 정보를 불러오는 데 실패했어.";
+      }
+    }
+
+    loadStatus();
+  </script>
+</BaseLayout>
