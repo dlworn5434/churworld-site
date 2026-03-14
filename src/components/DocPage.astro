@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const { slug, fallbackTitle, fallbackExcerpt, pathname } = Astro.props;
+---
+
+<BaseLayout title={`${fallbackTitle} | 츄르월드`} description={fallbackExcerpt} pathname={pathname}>
+  <article class="doc-shell">
+    <div class="doc-hero">
+      <span class="eyebrow">LIVE CONTENT</span>
+      <h1 id="docTitle">{fallbackTitle}</h1>
+      <p class="muted" id="docExcerpt">{fallbackExcerpt}</p>
+      <div class="doc-meta" id="docMeta">불러오는 중...</div>
+    </div>
+
+    <div id="docError" class="doc-error" style="display:none;"></div>
+    <div id="docLoading" class="doc-loading">문서를 불러오는 중이야. 잠시만 기다려줘.</div>
+    <div id="docBody" class="doc-body" style="display:none;"></div>
+  </article>
+
+  <script define:vars={{ slug }}>
+    import { createClient } from '@supabase/supabase-js';
+    import { marked } from 'marked';
+
+    const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+    const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+
+    const titleEl = document.getElementById('docTitle');
+    const excerptEl = document.getElementById('docExcerpt');
+    const metaEl = document.getElementById('docMeta');
+    const bodyEl = document.getElementById('docBody');
+    const loadingEl = document.getElementById('docLoading');
+    const errorEl = document.getElementById('docError');
+
+    async function load() {
+      if (!supabaseUrl || !supabaseKey) {
+        loadingEl.style.display = 'none';
+        errorEl.style.display = 'block';
+        errorEl.textContent = 'Supabase 환경변수가 비어 있어. README_SETUP.md를 보고 PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY를 먼저 넣어줘.';
+        return;
+      }
+
+      const supabase = createClient(supabaseUrl, supabaseKey);
+      const { data, error } = await supabase
+        .from('site_pages')
+        .select('page_title, excerpt, content_md, updated_at')
+        .eq('slug', slug)
+        .single();
+
+      loadingEl.style.display = 'none';
+
+      if (error || !data) {
+        errorEl.style.display = 'block';
+        errorEl.textContent = '문서를 불러오지 못했어. Supabase 테이블과 slug 설정을 확인해줘.';
+        return;
+      }
+
+      titleEl.textContent = data.page_title;
+      excerptEl.textContent = data.excerpt || '';
+      metaEl.textContent = `마지막 수정: ${new Date(data.updated_at).toLocaleString('ko-KR')}`;
+      bodyEl.innerHTML = marked.parse(data.content_md || '');
+      bodyEl.style.display = 'block';
+    }
+
+    load();
+  </script>
+</BaseLayout>
