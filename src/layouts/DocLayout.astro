@@ -1,17 +1,69 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-const { title = '문서', description = '', pathname = '/', badge = '' } = Astro.props;
+import { findSection } from '../data/wiki';
+const metadata = { ...Astro.props, ...(Astro.props.frontmatter ?? {}) };
+const { title = '문서', description = '', pathname = '/', badge = '' } = metadata;
 const heroLabel = badge || title;
+const section = findSection(pathname);
+const current = section?.entries.find((entry) => entry.href === pathname);
+const image = current?.icon ? `/assets/lifecore/${current.icon}` : null;
 ---
 <BaseLayout title={`${title} | 츄르월드`} description={description} pathname={pathname}>
-  <article class="doc-shell">
-    <div class="doc-hero">
-      <span class="eyebrow">{heroLabel}</span>
-      <h1>{title}</h1>
-      {description && <p class="muted">{description}</p>}
-    </div>
-    <div class="doc-body">
-      <slot />
-    </div>
-  </article>
+  <div class="doc-layout">
+    <aside class="doc-sidebar" aria-label="문서 탐색">
+      <a class="sidebar-home" href={section?.eyebrow === 'LIFE CONTENTS' ? '/life' : '/guide/basic'}>
+        <span>{section?.eyebrow ?? 'CHUR WORLD'}</span>
+        <strong>{section?.title ?? '서버 안내'}</strong>
+      </a>
+      {section && (
+        <nav class="sidebar-nav">
+          {section.entries.map((entry) => (
+            <a href={entry.href} class={entry.href === pathname ? 'active' : ''}>{entry.title}</a>
+          ))}
+        </nav>
+      )}
+      <div class="sidebar-toc" id="pageToc" hidden>
+        <span>이 문서에서</span>
+        <nav></nav>
+      </div>
+    </aside>
+
+    <article class="doc-shell">
+      <div class="doc-hero">
+        <div class="doc-hero-copy">
+          <div class="breadcrumbs"><a href="/">홈</a><span>/</span><span>{section?.title ?? '문서'}</span></div>
+          <span class="eyebrow">{heroLabel}</span>
+          <h1>{title}</h1>
+          {description && <p class="doc-summary">{description}</p>}
+        </div>
+        {image && <img class="doc-cover-image" src={image} alt="" />}
+      </div>
+      <div class="doc-body" id="docContent">
+        <slot />
+      </div>
+      <div class="doc-end">
+        <span>문서 내용과 실제 서버 설정이 다르다면 운영진에게 알려주세요.</span>
+        <a href="/commands">명령어 모음 보기 →</a>
+      </div>
+    </article>
+  </div>
+
+  <script>
+    const content = document.querySelector('#docContent');
+    const toc = document.querySelector('#pageToc');
+    const tocNav = toc?.querySelector('nav');
+    const headings = content ? [...content.querySelectorAll('h2, h3')] : [];
+    if (toc instanceof HTMLElement && tocNav && headings.length > 1) {
+      headings.forEach((heading, index) => {
+        if (!(heading instanceof HTMLElement)) return;
+        if (!heading.id) heading.id = `section-${index + 1}`;
+        const link = document.createElement('a');
+        link.href = `#${heading.id}`;
+        link.textContent = heading.textContent ?? '';
+        if (heading.tagName === 'H3') link.className = 'depth-3';
+        tocNav.appendChild(link);
+      });
+      toc.hidden = false;
+    }
+  </script>
 </BaseLayout>

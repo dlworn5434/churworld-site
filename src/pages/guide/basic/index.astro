@@ -1,49 +1,36 @@
 ---
-import DocLayout from '../../../layouts/DocLayout.astro';
-const basicCards = [
-  { title: '서버 및 월드', text: '서버 구조와 월드 이용 흐름을 안내하는 기본 가이드', status: '준비 중' },
-  { title: '마을', text: '클레임, 그룹, 마을원, 조공, 경작지까지 정리된 핵심 정착 콘텐츠', href: '/guide/basic/village', status: '상세 보기' },
-  { title: '잠수 의자', text: '앉아서 별을 캐고 판매하는 잠수 시스템 안내', href: '/guide/basic/diving-chair', status: '상세 보기' },
-  { title: '엘리베이터', text: '설치 조건과 이동 방법을 정리할 예정인 문서', status: '추가 예정' },
-  { title: '상점', text: '서버 상점과 개인 상점 이용법을 정리할 예정인 문서', status: '추가 예정' },
-  { title: '가방', text: '가방 확장, 사용 방법, 주의사항을 정리할 예정인 문서', status: '추가 예정' },
-  { title: '우편함', text: '아이템 전달과 수령 흐름을 정리할 예정인 문서', status: '추가 예정' },
-  { title: '길라잡이', text: '처음 온 유저가 따라가기 좋은 동선 안내 문서', status: '추가 예정' },
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const guides = [
+  { href: '/guide/basic/start', no: '01', title: '첫걸음 가이드', text: '접속, 통합 메뉴, 길라잡이와 첫 생활 선택', tag: '먼저 읽기' },
+  { href: '/guide/basic/menu', no: '02', title: '메뉴 사용법', text: 'Shift + F 메뉴에서 워프·생활·상점·편의 기능 찾기', tag: '핵심 기능' },
+  { href: '/map', no: '03', title: '월드 안내', text: '스폰, 마을 1~6, 야생 1~6, 지옥과 엔더', tag: '월드' },
+  { href: '/guide/basic/village', no: '04', title: '마을', text: '점유, 그룹, 멤버·손님, 조공, 세금과 레벨', tag: '정착' },
+  { href: '/guide/basic/travel', no: '05', title: '이동과 홈', text: '개인 홈, 공개 홈, 랜덤 이동, 뒤로 가기와 엘리베이터', tag: '편의' },
+  { href: '/guide/basic/bag', no: '06', title: '가방', text: '보관 공간, 확장 비용, 페이지와 자동 획득 설정', tag: '편의' },
+  { href: '/guide/basic/diving-chair', no: '07', title: '잠수 의자', text: '의자 사용법, 별 획득과 판매', tag: '콘텐츠' },
+  { href: '/guide/basic/benefits', no: '08', title: '등급 혜택', text: '츄르냥 등급별 홈·잠금·편의 혜택', tag: '안내' }
 ];
 ---
-<DocLayout title="기본 콘텐츠" badge="기본 콘텐츠" description="서버 입문에 필요한 핵심 시스템을 클릭형으로 정리한 허브" pathname="/guide/basic">
-  <section class="section-head" style="margin-bottom:18px;">
-    <div>
-      <div class="kicker">basic contents hub</div>
-      <h2>기본 콘텐츠 허브</h2>
-      <p>처음 적응할 때 자주 찾는 시스템을 한 곳에 모아뒀어. 상세 내용이 준비된 항목은 바로 들어가서 확인할 수 있어.</p>
-    </div>
+
+<BaseLayout title="시작 가이드 | 츄르월드" description="츄르월드의 정착과 편의 기능을 한눈에 보는 시작 가이드" pathname="/guide/basic">
+  <section class="index-hero warm-hero">
+    <div><span class="kicker">START HERE</span><h1>츄르월드 시작 가이드</h1><p>처음 접속한 순간부터 마을에 정착할 때까지, 꼭 필요한 기능을 순서대로 모았습니다.</p></div>
+    <div class="index-hero-side"><img src="/assets/lifecore/lifeknowledge.png" alt="" /><span><b>추천 순서</b>첫걸음 → 메뉴 → 월드 → 마을</span></div>
   </section>
 
-  <div class="grid-2 basic-hub-grid">
-    {basicCards.map((item) => (
-      item.href ? (
-        <a href={item.href} class="card link-card guide-card">
-          <span class="tag">기본 콘텐츠</span>
-          <h3>{item.title}</h3>
-          <p>{item.text}</p>
-          <span class="link-hint">{item.status}</span>
+  <section class="guide-index">
+    <div class="section-heading"><div><span class="kicker">GUIDE INDEX</span><h2>기본 문서</h2></div><button class="section-link as-button" type="button" data-search-open>문서 검색 →</button></div>
+    <div class="guide-list-grid">
+      {guides.map((guide) => (
+        <a class="guide-list-card" href={guide.href}>
+          <span class="guide-no">{guide.no}</span>
+          <div><small>{guide.tag}</small><h3>{guide.title}</h3><p>{guide.text}</p></div>
+          <b>→</b>
         </a>
-      ) : (
-        <div class="card guide-card guide-card--static">
-          <span class="tag">기본 콘텐츠</span>
-          <h3>{item.title}</h3>
-          <p>{item.text}</p>
-          <span class="soon-badge">{item.status}</span>
-        </div>
-      )
-    ))}
-  </div>
-
-  <section style="margin-top:22px;">
-    <div class="card notice-box">
-      <h3 style="margin-top:0;">현재 열람 가능한 상세 문서</h3>
-      <p>지금은 <strong>마을</strong>과 <strong>잠수 의자</strong>가 먼저 정리되어 있어. 나머지 기본 콘텐츠도 같은 방식으로 계속 추가하면 돼.</p>
+      ))}
     </div>
   </section>
-</DocLayout>
+
+  <section class="tip-banner"><b>게임 안에서는</b><span><kbd>Shift</kbd> + <kbd>F</kbd>로 통합 메뉴를 열 수 있습니다.</span><a href="/guide/basic/menu">메뉴 자세히 보기 →</a></section>
+</BaseLayout>

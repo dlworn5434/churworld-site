@@ -1,14 +1,15 @@
 ---
-const { title = '츄르월드', description = '츄르월드 공식 사이트', pathname = '/' } = Astro.props;
+import { searchEntries } from '../data/wiki';
+
+const { title = '츄르월드', description = '츄르월드 서버 위키', pathname = '/' } = Astro.props;
 const nav = [
-  { href: '/', label: '홈' },
-  { href: '/guide/basic', label: '기본 콘텐츠' },
+  { href: '/', label: '홈', exact: true },
+  { href: '/guide/basic', label: '시작하기' },
   { href: '/life', label: '생활 콘텐츠' },
-  { href: '/commands', label: '명령어' },
-  { href: '/rules', label: '규칙' },
-  { href: '/notice', label: '공지' },
-  { href: '/terms', label: '이용 약관' }
+  { href: '/map', label: '월드 안내', exact: true },
+  { href: '/commands', label: '명령어', exact: true }
 ];
+const isActive = (item: (typeof nav)[number]) => item.exact ? pathname === item.href : pathname.startsWith(item.href);
 ---
 <!doctype html>
 <html lang="ko">
@@ -17,27 +18,127 @@ const nav = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#24251f" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="stylesheet" href="/site.css" />
   </head>
   <body>
     <header class="site-header">
       <div class="wrap nav">
-        <a href="/" class="brand">
-          <span class="brand-badge"></span>
-          <span>츄르월드</span>
+        <a href="/" class="brand" aria-label="츄르월드 홈">
+          <span class="brand-mark"><img src="/assets/lifecore/chru.png" alt="" /></span>
+          <span class="brand-text">
+            <small>OFFICIAL WIKI</small>
+            <strong>츄르월드</strong>
+          </span>
         </a>
-        <nav class="nav-links">
+
+        <nav class="nav-links desktop-nav" aria-label="주요 메뉴">
           {nav.map((item) => (
-            <a href={item.href} class={pathname === item.href ? 'active' : ''}>{item.label}</a>
+            <a href={item.href} class={isActive(item) ? 'active' : ''}>{item.label}</a>
           ))}
         </nav>
+
+        <div class="nav-actions">
+          <button class="search-trigger" type="button" data-search-open aria-label="문서 검색 열기">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.4a7.75 7.75 0 1 1-15.5 0 7.75 7.75 0 0 1 15.5 0Z" /></svg>
+            <span>문서 검색</span>
+            <kbd>/</kbd>
+          </button>
+          <details class="mobile-menu">
+            <summary aria-label="메뉴 열기"><span></span><span></span><span></span></summary>
+            <nav aria-label="모바일 메뉴">
+              {nav.map((item) => <a href={item.href}>{item.label}</a>)}
+              <a href="/rules">서버 규칙</a>
+              <a href="/notice">공지사항</a>
+            </nav>
+          </details>
+        </div>
       </div>
     </header>
+
     <main class="wrap">
       <slot />
     </main>
+
     <footer class="footer">
-      <div class="wrap">© 2026 츄르월드 · 서버 주소 chur.kr</div>
+      <div class="wrap footer-inner">
+        <div class="footer-brand">
+          <img src="/assets/lifecore/chru.png" alt="" />
+          <div>
+            <strong>츄르월드 위키</strong>
+            <p>서버 주소 <b>churworld.kr</b> · 전용 클라이언트 접속</p>
+          </div>
+        </div>
+        <div class="footer-links">
+          <a href="/guide/basic">시작하기</a>
+          <a href="/life">생활 콘텐츠</a>
+          <a href="/rules">서버 규칙</a>
+          <a href="/terms">이용 약관</a>
+          <a href="https://discord.gg/cKUe95ZBg" target="_blank" rel="noreferrer">디스코드</a>
+        </div>
+      </div>
     </footer>
+
+    <dialog class="search-dialog" id="wikiSearch" aria-label="위키 검색">
+      <div class="search-panel">
+        <div class="search-field">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.4a7.75 7.75 0 1 1-15.5 0 7.75 7.75 0 0 1 15.5 0Z" /></svg>
+          <input id="wikiSearchInput" type="search" placeholder="마을, 낚시, 가방, 명령어…" autocomplete="off" />
+          <button type="button" data-search-close aria-label="검색 닫기">ESC</button>
+        </div>
+        <p class="search-hint">찾는 내용을 입력하거나 아래 문서를 선택하세요.</p>
+        <div class="search-results" id="wikiSearchResults">
+          {searchEntries.map((entry) => (
+            <a href={entry.href} data-search-item={`${entry.title} ${entry.description} ${entry.keywords ?? ''} ${entry.section}`.toLowerCase()}>
+              <span><small>{entry.section}</small><strong>{entry.title}</strong></span>
+              <p>{entry.description}</p>
+            </a>
+          ))}
+          <div class="search-empty" id="wikiSearchEmpty" hidden>일치하는 문서가 없습니다.</div>
+        </div>
+      </div>
+    </dialog>
+
+    <script>
+      const dialog = document.querySelector('#wikiSearch');
+      const input = document.querySelector('#wikiSearchInput');
+      const empty = document.querySelector('#wikiSearchEmpty');
+      const items = [...document.querySelectorAll('[data-search-item]')];
+
+      function openSearch() {
+        if (!(dialog instanceof HTMLDialogElement)) return;
+        dialog.showModal();
+        requestAnimationFrame(() => input instanceof HTMLInputElement && input.focus());
+      }
+
+      function closeSearch() {
+        if (dialog instanceof HTMLDialogElement) dialog.close();
+      }
+
+      document.querySelectorAll('[data-search-open]').forEach((button) => button.addEventListener('click', openSearch));
+      document.querySelector('[data-search-close]')?.addEventListener('click', closeSearch);
+      dialog?.addEventListener('click', (event) => {
+        if (event.target === dialog) closeSearch();
+      });
+      document.addEventListener('keydown', (event) => {
+        const target = event.target;
+        const typing = target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement;
+        if (event.key === '/' && !typing) {
+          event.preventDefault();
+          openSearch();
+        }
+      });
+      input?.addEventListener('input', () => {
+        const query = input instanceof HTMLInputElement ? input.value.trim().toLowerCase() : '';
+        let visible = 0;
+        items.forEach((item) => {
+          const match = !query || item.getAttribute('data-search-item')?.includes(query);
+          item.toggleAttribute('hidden', !match);
+          if (match) visible += 1;
+        });
+        if (empty instanceof HTMLElement) empty.hidden = visible > 0;
+      });
+    </script>
   </body>
 </html>

@@ -1,0 +1,69 @@
+export type WikiEntry = {
+  href: string;
+  title: string;
+  description: string;
+  keywords?: string;
+  icon?: string;
+};
+
+export type WikiSection = {
+  title: string;
+  eyebrow: string;
+  entries: WikiEntry[];
+};
+
+export const wikiSections: WikiSection[] = [
+  {
+    title: '처음 오셨나요?',
+    eyebrow: 'START HERE',
+    entries: [
+      { href: '/guide/basic/start', title: '첫걸음 가이드', description: '접속 후 가장 먼저 할 일과 추천 진행 순서', keywords: '초보 시작 입문 길라잡이' },
+      { href: '/guide/basic/menu', title: '메뉴 사용법', description: 'Shift + F 통합 메뉴와 주요 기능', keywords: '메뉴 단축키 워프 상점 거래소' },
+      { href: '/map', title: '월드 안내', description: '스폰, 마을, 야생, 지옥과 엔더 월드', keywords: '지도 월드 이동 워프 야생 지옥 엔더' },
+      { href: '/commands', title: '명령어 모음', description: '자주 쓰는 플레이어 명령어', keywords: '명령 커맨드 도움말' }
+    ]
+  },
+  {
+    title: '정착과 편의',
+    eyebrow: 'SETTLEMENT',
+    entries: [
+      { href: '/guide/basic/village', title: '마을', description: '점유, 그룹, 손님, 조공, 세금과 레벨', keywords: '마을 클레임 점유 그룹 조공 세금 비행' },
+      { href: '/guide/basic/travel', title: '이동과 홈', description: '개인 홈, 공개 홈, 랜덤 이동과 엘리베이터', keywords: '홈 셋홈 공개홈 rtp back 엘리베이터 이동' },
+      { href: '/guide/basic/bag', title: '가방', description: '보관 공간, 확장 비용과 자동 수집', keywords: '가방 인벤토리 확장 자동획득' },
+      { href: '/guide/basic/diving-chair', title: '잠수 의자', description: '잠수 보상과 별 판매 방법', keywords: '잠수 의자 별 판매' },
+      { href: '/guide/basic/benefits', title: '등급 혜택', description: '츄르냥, 골드츄르냥, 로얄츄르냥', keywords: '후원 등급 혜택 vip 제작대 셜커' }
+    ]
+  },
+  {
+    title: '생활 콘텐츠',
+    eyebrow: 'LIFE CONTENTS',
+    entries: [
+      { href: '/life/growth', title: '성장 구조', description: '공용 레벨, 생활 숙련도와 스탯', keywords: '근로 지식 감각 행운 숙련도', icon: 'lifework.png' },
+      { href: '/life/miner', title: '광부', description: '광석, 광맥, 채굴 스킬과 감지', keywords: '채광 광산 광맥 스캔', icon: 'lifemine.png' },
+      { href: '/life/fisher', title: '어부', description: '낚시 미니게임, 등급, 조각과 파츠', keywords: '낚시 물고기 파츠 보물', icon: 'lifefish.png' },
+      { href: '/life/farmer', title: '농부', description: '커스텀 작물, 수확 등급과 농사 스킬', keywords: '농사 작물 씨앗 수확', icon: 'lifefarm.png' },
+      { href: '/life/chef', title: '요리사', description: '레시피, 조리대와 요리 등급', keywords: '요리 레시피 조리 품질', icon: 'lifecook.png' },
+      { href: '/life/woodcutter', title: '나무꾼', description: '벌목, 커스텀 나무와 나무꾼 스킬', keywords: '벌목 나무 커스텀 나무 도끼', icon: 'lifewoodcutter.png' },
+      { href: '/life/blacksmith', title: '대장술', description: '제련, 제작, 재료 절약과 추가 결과물', keywords: '대장장이 대장술 제련 제작 화로 모루', icon: 'lifeblacksmith.png' },
+      { href: '/life/systems', title: '작업대와 시스템', description: '생활 작업대와 공용 시스템', keywords: '작업대 화로 의뢰 제작', icon: 'lifeknowledge.png' },
+      { href: '/life/faq', title: '생활 FAQ', description: '생활 콘텐츠 자주 묻는 질문', keywords: '질문 도움' }
+    ]
+  },
+  {
+    title: '서버 안내',
+    eyebrow: 'SERVER INFO',
+    entries: [
+      { href: '/notice', title: '공지사항', description: '서버 운영 소식과 업데이트', keywords: '공지 업데이트 소식' },
+      { href: '/rules', title: '서버 규칙', description: '함께 지켜야 할 이용 기준', keywords: '규칙 제재 신고' },
+      { href: '/terms', title: '이용 약관', description: '서비스 이용 및 운영 정책', keywords: '약관 정책' }
+    ]
+  }
+];
+
+export const searchEntries = wikiSections.flatMap((section) =>
+  section.entries.map((entry) => ({ ...entry, section: section.title }))
+);
+
+export function findSection(pathname: string) {
+  return wikiSections.find((section) => section.entries.some((entry) => entry.href === pathname));
+}

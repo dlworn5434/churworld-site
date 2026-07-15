@@ -1,19 +1,41 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const worldGroups = [
+  { id: 'spawn', title: '스폰 월드', count: '중앙 허브', text: '상점과 주요 안내 시설이 모여 있는 기본 월드입니다. 통합 메뉴의 스폰 버튼으로 돌아올 수 있습니다.', tone: 'spawn', requirement: '바로 이용' },
+  { id: 'village', title: '마을 월드', count: '마을 1 — 6', text: '마을을 만들고 점유지를 넓혀 정착하는 월드입니다. 통합 메뉴의 마을 탭에서 선택합니다.', tone: 'village', requirement: '정착 공간' },
+  { id: 'wild', title: '야생 월드', count: '야생 1 — 6', text: '자원 채집과 탐험을 위한 월드입니다. /rtp를 사용하면 안전한 무작위 위치로 이동합니다.', tone: 'wild', requirement: '자원 채집' },
+  { id: 'nether', title: '지옥 월드', count: '지옥 1 — 3', text: '지옥 자원을 모으는 월드입니다. 통합 메뉴 안내 기준 공용 레벨 10부터 이용합니다.', tone: 'nether', requirement: '공용 Lv.10' },
+  { id: 'end', title: '엔더 월드', count: '엔더 1 — 3', text: '엔더 자원과 탐험을 위한 월드입니다. 통합 메뉴 안내 기준 공용 레벨 20부터 이용합니다.', tone: 'end', requirement: '공용 Lv.20' }
+];
 ---
 
-<BaseLayout title="츄르월드 지도">
-  <div class="card">
-    <h1 style="margin-top:0;">츄르월드 지도</h1>
-    <p>
-      아직 지도 링크를 연결하지 않았어.
-      Dynmap 또는 BlueMap을 열면 여기에 붙이면 돼.
-    </p>
+<BaseLayout title="월드 안내 | 츄르월드" description="츄르월드 스폰, 마을, 야생, 지옥과 엔더 월드 안내" pathname="/map">
+  <section class="map-hero">
+    <div><span class="kicker">WORLD GUIDE</span><h1>목적에 맞는 월드로<br />빠르게 이동하세요.</h1><p>통합 메뉴에서 마을과 워프를 선택하면 각 월드의 등록 위치로 이동할 수 있습니다.</p><div class="key-guide"><kbd>Shift</kbd><span>+</span><kbd>F</kbd><b>통합 메뉴 열기</b></div></div>
+    <div class="world-orbit" aria-hidden="true"><span class="orbit-center">SPAWN</span><i class="orbit-dot dot-1"></i><i class="orbit-dot dot-2"></i><i class="orbit-dot dot-3"></i><i class="orbit-dot dot-4"></i><em>마을</em><em>야생</em><em>지옥</em><em>엔더</em></div>
+  </section>
 
-    <p style="color:#94a3b8;">
-      예시: 나중에 지도 주소가 생기면 아래처럼 버튼이나 iframe으로 연결 가능
-    </p>
+  <section class="world-section">
+    <div class="section-heading"><div><span class="kicker">WORLD DIRECTORY</span><h2>월드 구성</h2><p>좌표 대신 메뉴에 저장된 안전한 이동 지점을 이용하세요.</p></div></div>
+    <div class="world-card-grid">
+      {worldGroups.map((world, index) => (
+        <article class={`world-card ${world.tone}`} id={world.id}>
+          <div class="world-card-top"><span>0{index + 1}</span><b>{world.requirement}</b></div>
+          <div class="world-symbol"><i></i><i></i><i></i></div>
+          <small>{world.count}</small><h3>{world.title}</h3><p>{world.text}</p>
+        </article>
+      ))}
+    </div>
+  </section>
 
-    <pre style="white-space:pre-wrap; background:#0b1220; padding:16px; border-radius:16px; overflow:auto;">&lt;a href="https://지도주소" target="_blank" rel="noreferrer"&gt;지도 열기&lt;/a&gt;</pre>
-  </div>
+  <section class="travel-panel">
+    <div><span class="kicker">RANDOM TELEPORT</span><h2><code>/rtp</code> 랜덤 이동</h2><p>마을 1~6과 야생 1~6에서 사용할 수 있습니다. X/Z ±5,000 범위 안의 안전한 위치를 찾으며, 물 위라면 임시 보트에 탑승합니다.</p></div>
+    <div class="cooldown-table"><div><span>일반</span><strong>60분</strong></div><div><span>츄르냥</span><strong>3분</strong></div></div>
+  </section>
+
+  <section class="map-help-grid">
+    <a href="/guide/basic/travel"><span>홈과 이동</span><h3>자주 가는 곳은 홈으로 저장</h3><p><code>/sethome</code>, 공개 홈, <code>/back</code> 사용법을 확인하세요.</p><b>이동 문서 보기 →</b></a>
+    <a href="/guide/basic/village"><span>마을 정착</span><h3>내 땅을 점유하고 마을 만들기</h3><p>마을 생성부터 그룹과 권한, 조공과 세금까지 정리했습니다.</p><b>마을 문서 보기 →</b></a>
+  </section>
 </BaseLayout>

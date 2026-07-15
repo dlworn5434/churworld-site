@@ -1,44 +1,46 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const pages = [
-  { href: '/life/miner', title: '광부', text: '광물 채굴과 커스텀 광맥을 통해 성장하는 생활', stats: '근로 · 지식 · 행운' },
-  { href: '/life/fisher', title: '어부', text: '등급 물고기, 미니게임, 보물과 조각이 핵심인 생활', stats: '근로 · 행운 · 지식' },
-  { href: '/life/farmer', title: '농부', text: '커스텀 작물 재배와 수확 효율에 특화된 생활', stats: '근로 · 감각 · 행운' },
-  { href: '/life/chef', title: '요리사', text: '레시피 조리, 성공률, 등급 요리 제작 중심 생활', stats: '근로 · 지식 · 행운 · 감각' },
+
+const jobs = [
+  { href: '/life/miner', title: '광부', image: 'lifemine.png', summary: '광석과 광맥을 찾아 채굴하며 보석과 핵심 재료를 모으는 생활', stats: '근로 · 감각 · 행운', tone: 'stone' },
+  { href: '/life/fisher', title: '어부', image: 'lifefish.png', summary: '미니게임을 즐기고 파츠를 조합해 더 좋은 물고기를 노리는 생활', stats: '근로 · 지식 · 행운', tone: 'water' },
+  { href: '/life/farmer', title: '농부', image: 'lifefarm.png', summary: '커스텀 작물을 키우고 높은 등급과 추가 수확을 노리는 생활', stats: '근로 · 감각 · 행운', tone: 'field' },
+  { href: '/life/chef', title: '요리사', image: 'lifecook.png', summary: '레시피를 익혀 실버와 골드 품질의 요리를 만드는 생활', stats: '근로 · 지식 · 감각 · 행운', tone: 'ember' },
+  { href: '/life/woodcutter', title: '나무꾼', image: 'lifewoodcutter.png', summary: '원목과 커스텀 나무를 벌목하며 채집 효율을 키우는 생활', stats: '근로 · 행운', tone: 'wood' },
+  { href: '/life/blacksmith', title: '대장술', image: 'lifeblacksmith.png', summary: '대장간 화로에서 제련하고 재료 절약과 추가 제작을 노리는 생활', stats: '근로 · 지식 · 행운', tone: 'smith' }
 ];
-const commonStats = ['근로', '지식', '감각', '행운', '흥정(준비중)', '명성(준비중)'];
+
+const stats = [
+  { name: '근로', image: 'lifework.png', text: '작업 속도와 기본 효율' },
+  { name: '지식', image: 'lifeknowledge.png', text: '성공률과 경험치 보정' },
+  { name: '감각', image: 'lifesense.png', text: '반응 속도와 추가 획득' },
+  { name: '행운', image: 'lifeluck.png', text: '등급과 보너스 확률' }
+];
 ---
-<BaseLayout title="생활 콘텐츠 | 츄르월드" description="생활 카테고리 허브" pathname="/life">
-  <section class="doc-shell">
-    <div class="doc-hero">
-      <span class="eyebrow">LIFE CONTENTS</span>
-      <h1>생활 콘텐츠</h1>
-      <p class="muted">각 생활 카테고리를 클릭하면 상세 정보 페이지로 이동하게 구성했어.</p>
-    </div>
 
-    <div class="grid-3" style="margin-bottom:18px;">
-      <div class="card"><h3>생활 직업</h3><p>광부 / 어부 / 농부 / 요리사 4종을 중심으로 성장하는 구조야.</p></div>
-      <div class="card"><h3>숙련도</h3><p>각 생활은 별도의 숙련도 레벨과 스킬 포인트를 따로 관리해.</p></div>
-      <div class="card"><h3>마나</h3><p>액티브 스킬에 사용하는 공통 자원. 기본 최대 마나는 100이야.</p></div>
+<BaseLayout title="생활 콘텐츠 | 츄르월드" description="츄르월드 생활 직업과 성장 구조 안내" pathname="/life">
+  <section class="index-hero life-index-hero">
+    <div><span class="kicker">LIFE CONTENTS</span><h1>손에 익을수록 깊어지는<br />여섯 가지 생활</h1><p>모든 생활은 공용 레벨을 함께 올리고, 직업별 숙련도와 스킬은 따로 성장합니다.</p><div class="hero-actions"><a class="btn primary" href="/life/growth">성장 구조 먼저 보기</a><a class="btn text" href="/life/faq">생활 FAQ →</a></div></div>
+    <div class="stat-art-stack">
+      {stats.map((stat) => <div><img src={`/assets/lifecore/${stat.image}`} alt="" /><span><b>{stat.name}</b>{stat.text}</span></div>)}
     </div>
+  </section>
 
-    <div class="card" style="margin-bottom:18px;">
-      <h3 style="margin-bottom:12px;">공용 스탯</h3>
-      <div class="pill-list">
-        {commonStats.map((item) => <span class="pill">{item}</span>)}
-      </div>
-    </div>
-
-    <div class="grid-2">
-      {pages.map((item) => (
-        <a href={item.href} class="card link-card" aria-label={`${item.title} 상세 보기`}>
-          <span class="tag">생활</span>
-          <h3>{item.title}</h3>
-          <p>{item.text}</p>
-          <div class="pill-list" style="margin-top:auto;"><span class="pill">핵심 스탯: {item.stats}</span></div>
-          <span class="link-hint">클릭 가능</span>
+  <section class="home-section">
+    <div class="section-heading"><div><span class="kicker">CHOOSE YOUR LIFE</span><h2>생활 직업</h2><p>자주 하는 활동과 원하는 보상에 맞춰 골라보세요.</p></div></div>
+    <div class="life-job-list">
+      {jobs.map((job, index) => (
+        <a class={`life-job-row ${job.tone}`} href={job.href}>
+          <span class="life-job-index">0{index + 1}</span><img src={`/assets/lifecore/${job.image}`} alt="" loading="lazy" />
+          <div><small>LIFE JOB</small><h3>{job.title}</h3><p>{job.summary}</p><span>{job.stats}</span></div><b>문서 보기 →</b>
         </a>
       ))}
     </div>
+  </section>
+
+  <section class="life-resource-grid">
+    <a href="/life/growth"><span>성장</span><h3>공용 레벨과 스탯</h3><p>숙련도, 스탯 포인트와 직업별 적용 범위를 정리했습니다.</p><b>성장 구조 보기 →</b></a>
+    <a href="/life/systems"><span>제작</span><h3>작업대와 주요 시스템</h3><p>어부 작업대, 요리사 조리대, 대장간 화로와 의뢰를 확인하세요.</p><b>시스템 보기 →</b></a>
+    <a href="/life/faq"><span>도움말</span><h3>생활 FAQ</h3><p>숙련도와 파츠, 작물, 나무꾼과 대장술에 관한 자주 묻는 질문입니다.</p><b>FAQ 보기 →</b></a>
   </section>
 </BaseLayout>
