@@ -38,15 +38,27 @@ export const wikiSections: WikiSection[] = [
     title: '생활 콘텐츠',
     eyebrow: 'LIFE CONTENTS',
     entries: [
-      { href: '/life/growth', title: '성장 구조', description: '공용 레벨, 생활 숙련도와 스탯', keywords: '근로 지식 감각 행운 숙련도', icon: 'lifework.png' },
       { href: '/life/miner', title: '광부', description: '광석, 광맥, 채굴 스킬과 감지', keywords: '채광 광산 광맥 스캔', icon: 'lifemine.png' },
       { href: '/life/fisher', title: '어부', description: '낚시 미니게임, 등급, 조각과 파츠', keywords: '낚시 물고기 파츠 보물', icon: 'lifefish.png' },
       { href: '/life/farmer', title: '농부', description: '커스텀 작물, 수확 등급과 농사 스킬', keywords: '농사 작물 씨앗 수확', icon: 'lifefarm.png' },
-      { href: '/life/chef', title: '요리사', description: '레시피, 조리대와 요리 등급', keywords: '요리 레시피 조리 품질', icon: 'lifecook.png' },
-      { href: '/life/woodcutter', title: '나무꾼', description: '벌목, 커스텀 나무와 나무꾼 스킬', keywords: '벌목 나무 커스텀 나무 도끼', icon: 'lifewoodcutter.png' },
-      { href: '/life/blacksmith', title: '대장술', description: '제련, 제작, 재료 절약과 추가 결과물', keywords: '대장장이 대장술 제련 제작 화로 모루', icon: 'lifeblacksmith.png' },
-      { href: '/life/systems', title: '작업대와 시스템', description: '생활 작업대와 공용 시스템', keywords: '작업대 화로 의뢰 제작', icon: 'lifeknowledge.png' },
-      { href: '/life/faq', title: '생활 FAQ', description: '생활 콘텐츠 자주 묻는 질문', keywords: '질문 도움' }
+      { href: '/life/woodcutter', title: '나무꾼', description: '벌목, 커스텀 나무와 나무꾼 스킬', keywords: '벌목 나무 커스텀 나무 도끼', icon: 'lifewoodcutter.png' }
+    ]
+  },
+  {
+    title: '생산 콘텐츠',
+    eyebrow: 'PRODUCTION',
+    entries: [
+      { href: '/life/chef', title: '요리사', description: '레시피, 조리대와 요리 등급', keywords: '생산 요리 레시피 조리 품질', icon: 'lifecook.png' },
+      { href: '/life/blacksmith', title: '대장술', description: '제련, 제작, 재료 절약과 추가 결과물', keywords: '생산 대장장이 대장술 제련 제작 화로 모루', icon: 'lifeblacksmith.png' }
+    ]
+  },
+  {
+    title: '생활·생산 안내',
+    eyebrow: 'LIFE GUIDE',
+    entries: [
+      { href: '/life/growth', title: '성장 구조', description: '공용 레벨, 직업별 숙련도와 스탯', keywords: '근로 지식 감각 행운 숙련도 생산', icon: 'lifework.png' },
+      { href: '/life/systems', title: '작업대와 시스템', description: '생활·생산 작업대와 공용 시스템', keywords: '작업대 화로 의뢰 제작 생산', icon: 'lifeknowledge.png' },
+      { href: '/life/faq', title: '생활·생산 FAQ', description: '생활·생산 콘텐츠 자주 묻는 질문', keywords: '질문 도움 생산' }
     ]
   },
   {

@@ -2,21 +2,21 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const startSteps = [
-  { no: '01', title: '통합 메뉴 열기', text: '서버 안에서 Shift + F를 눌러 워프, 생활, 가방과 상점을 확인하세요.', href: '/guide/basic/menu' },
-  { no: '02', title: '길라잡이 따라가기', text: '/길라잡이의 기본 목표를 따라 첫 장비와 생활 기반을 마련하세요.', href: '/guide/basic/start' },
-  { no: '03', title: '생활 하나 골라보기', text: '광부, 어부, 농부, 요리사, 나무꾼, 대장술 중 마음에 드는 생활부터 시작하세요.', href: '/life' }
+  { no: '01', title: '통합 메뉴 열기', text: '서버 안에서 Shift + F를 눌러 워프, 생활·생산, 가방과 상점을 확인하세요.', href: '/guide/basic/menu' },
+  { no: '02', title: '길라잡이 따라가기', text: '/길라잡이의 기본 목표를 따라 첫 장비와 정착 기반을 마련하세요.', href: '/guide/basic/start' },
+  { no: '03', title: '직업 하나 골라보기', text: '생활 4종과 생산 2종 중 마음에 드는 직업부터 시작하세요.', href: '/life' }
 ];
 
-const lifeJobs = [
-  { title: '광부', text: '바닐라 광석과 커스텀 광맥을 채굴하고 보석과 재료를 모읍니다.', href: '/life/miner', image: 'lifemine.png', color: 'stone' },
-  { title: '어부', text: '낚시 미니게임과 장비 파츠, 등급 물고기를 함께 성장시킵니다.', href: '/life/fisher', image: 'lifefish.png', color: 'water' },
-  { title: '농부', text: '커스텀 작물을 기르고 수확 등급과 반복 효율을 높입니다.', href: '/life/farmer', image: 'lifefarm.png', color: 'field' },
-  { title: '요리사', text: '재료를 조리해 노멀·실버·골드 등급의 요리를 완성합니다.', href: '/life/chef', image: 'lifecook.png', color: 'ember' },
-  { title: '나무꾼', text: '원목과 커스텀 나무를 벌목하고 도끼와 채집 효율을 성장시킵니다.', href: '/life/woodcutter', image: 'lifewoodcutter.png', color: 'wood' },
-  { title: '대장술', text: '대장간 화로에서 제련하고 재료 절약과 추가 제작을 노립니다.', href: '/life/blacksmith', image: 'lifeblacksmith.png', color: 'smith' }
+const jobs = [
+  { category: '생활', title: '광부', text: '바닐라 광석과 커스텀 광맥을 채굴하고 보석과 재료를 모읍니다.', href: '/life/miner', image: 'lifemine.png', color: 'stone' },
+  { category: '생활', title: '어부', text: '낚시 미니게임과 장비 파츠, 등급 물고기를 함께 성장시킵니다.', href: '/life/fisher', image: 'lifefish.png', color: 'water' },
+  { category: '생활', title: '농부', text: '커스텀 작물을 기르고 수확 등급과 반복 효율을 높입니다.', href: '/life/farmer', image: 'lifefarm.png', color: 'field' },
+  { category: '생활', title: '나무꾼', text: '원목과 커스텀 나무를 벌목하고 도끼와 채집 효율을 성장시킵니다.', href: '/life/woodcutter', image: 'lifewoodcutter.png', color: 'wood' },
+  { category: '생산', title: '요리사', text: '재료를 조리해 노멀·실버·골드 등급의 요리를 완성합니다.', href: '/life/chef', image: 'lifecook.png', color: 'ember' },
+  { category: '생산', title: '대장술', text: '대장간 화로에서 제련하고 재료 절약과 추가 제작을 노립니다.', href: '/life/blacksmith', image: 'lifeblacksmith.png', color: 'smith' }
 ];
 
-const heroJobs = lifeJobs.slice(0, 4);
+const heroJobs = jobs.filter((job) => job.category === '생활');
 
 const wikiCards = [
   { title: '마을과 정착', text: '점유, 그룹, 손님, 조공, 세금, 레벨과 마을 비행', href: '/guide/basic/village', label: '정착' },
@@ -26,12 +26,12 @@ const wikiCards = [
 ];
 ---
 
-<BaseLayout title="츄르월드 위키" description="츄르월드의 생활, 마을, 월드와 편의 기능을 정리한 공식 위키" pathname="/">
+<BaseLayout title="츄르월드 위키" description="츄르월드의 생활·생산, 마을, 월드와 편의 기능을 정리한 공식 위키" pathname="/">
   <section class="home-hero">
     <div class="home-hero-copy">
       <span class="kicker">CHUR WORLD · MINECRAFT 1.21.4+</span>
       <h1>느긋하게 정착하고,<br /><em>나만의 생활</em>을<span class="mobile-break"><br /></span> 만들어 보세요.</h1>
-      <p class="lead">마을을 만들고, 자원을 모으고, 여섯 생활 직업을 키우는 츄르월드. 필요한 정보는 이 위키에서 빠르게 찾아볼 수 있습니다.</p>
+      <p class="lead">마을을 만들고, 자원을 모으고, 네 생활 직업과 두 생산 직업을 키우는 츄르월드. 필요한 정보는 이 위키에서 빠르게 찾아볼 수 있습니다.</p>
 
       <div class="server-address">
         <div><small>SERVER ADDRESS</small><strong>churworld.kr</strong></div>
@@ -57,13 +57,13 @@ const wikiCards = [
           </a>
         ))}
       </div>
-      <div class="hero-art-note"><span>공용 레벨</span><b>생활 활동을 할수록 함께 성장합니다</b></div>
+      <div class="hero-art-note"><span>공용 레벨</span><b>생활과 생산 활동을 할수록 함께 성장합니다</b></div>
     </div>
   </section>
 
   <section class="fact-strip" aria-label="서버 핵심 정보">
     <div><strong>1.21.4+</strong><span>서버 버전</span></div>
-    <div><strong>6가지</strong><span>생활 직업</span></div>
+    <div><strong>4 + 2</strong><span>생활 · 생산 직업</span></div>
     <div><strong>6개</strong><span>야생·마을 월드</span></div>
     <div><strong>Shift + F</strong><span>통합 메뉴</span></div>
   </section>
@@ -86,14 +86,14 @@ const wikiCards = [
 
   <section class="home-section life-showcase">
     <div class="section-heading">
-      <div><span class="kicker">LIFE CONTENTS</span><h2>생활은 취향대로, 성장은 함께</h2><p>한 가지를 깊게 파도 좋고, 모든 생활을 천천히 경험해도 좋습니다.</p></div>
-      <a href="/life" class="section-link">생활 콘텐츠 전체 보기 →</a>
+      <div><span class="kicker">LIFE &amp; PRODUCTION</span><h2>생활과 생산은 취향대로</h2><p>자원을 모으는 생활과 결과물을 만드는 생산을 원하는 방식으로 키워보세요.</p></div>
+      <a href="/life" class="section-link">생활·생산 콘텐츠 전체 보기 →</a>
     </div>
     <div class="job-grid">
-      {lifeJobs.map((job) => (
+      {jobs.map((job) => (
         <a href={job.href} class={`job-card ${job.color}`}>
           <img src={`/assets/lifecore/${job.image}`} alt="" loading="lazy" />
-          <div><span>생활 직업</span><h3>{job.title}</h3><p>{job.text}</p><b>자세히 보기 →</b></div>
+          <div><span>{job.category} 직업</span><h3>{job.title}</h3><p>{job.text}</p><b>자세히 보기 →</b></div>
         </a>
       ))}
     </div>

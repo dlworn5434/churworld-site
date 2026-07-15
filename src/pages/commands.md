@@ -2,7 +2,7 @@
 layout: ../layouts/DocLayout.astro
 title: 명령어 모음
 badge: 명령어
-description: 메뉴, 생활, 이동, 마을과 편의 기능에서 자주 쓰는 플레이어 명령어
+description: 메뉴, 생활·생산, 이동, 마을과 편의 기능에서 자주 쓰는 플레이어 명령어
 pathname: /commands
 ---
 
@@ -12,7 +12,7 @@ pathname: /commands
 | --- | --- |
 | `/메뉴` | 통합 메뉴 열기 |
 | `/길라잡이` | 초반 진행 목표 열기 |
-| `/life` | 생활 메인 메뉴 열기 |
+| `/life` | 생활·생산 메인 메뉴 열기 |
 | `/의뢰` | 의뢰 목록 열기 |
 | `/가방` | 개인 가방 열기 |
 | `/우편함` | 우편함 열기 |
@@ -26,16 +26,26 @@ pathname: /commands
 | `/life skills mining` | 광부 스킬 GUI |
 | `/life skills farming` | 농부 스킬 GUI |
 | `/life skills fishing` | 어부 스킬 GUI |
-| `/life skills cooking` | 요리사 스킬 GUI |
 | `/life skills woodcutting` | 나무꾼 스킬 GUI |
-| `/life skills smithing` | 대장술 스킬 GUI |
 | `/life fishing` | 어부 메뉴 바로 열기 |
 | `/life scan` | 광석 감지 시작 |
 | `/life scan off` | 광석 감지 종료 |
 | `/life scan mode distance` | 가까운 광석부터 표시 |
 | `/life scan mode value` | 가치가 높은 광석부터 표시 |
-| `/life mana` | 현재 마나 확인 |
+
+## 생산
+
+| 명령어 | 기능 |
+| --- | --- |
+| `/life skills cooking` | 요리사 스킬 GUI |
+| `/life skills smithing` | 대장술 스킬 GUI |
 | `/life recipes` | 요리 레시피북 열기 |
+
+## 생활·생산 공통
+
+| 명령어 | 기능 |
+| --- | --- |
+| `/life mana` | 현재 마나 확인 |
 | `/경험치` | 적용 중인 경험치 증가 확인 |
 
 ## 이동과 홈
