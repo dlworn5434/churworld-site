@@ -18,6 +18,7 @@ export const wikiSections: WikiSection[] = [
     eyebrow: 'START HERE',
     entries: [
       { href: '/guide/basic/start', title: '첫걸음 가이드', description: '접속 후 가장 먼저 할 일과 추천 진행 순서', keywords: '초보 시작 입문 길라잡이' },
+      { href: '/guide/basic/tutorial', title: '신규 유저 튜토리얼', description: '로비에서 생활 핵심 기능을 체험하는 필수 과정', keywords: '튜토리얼 로비 신규 농사 채광 벌목 낚시' },
       { href: '/guide/basic/menu', title: '메뉴 사용법', description: 'Shift + F 통합 메뉴와 주요 기능', keywords: '메뉴 단축키 워프 상점 거래소' },
       { href: '/map', title: '월드 안내', description: '스폰, 마을, 야생, 지옥과 엔더 월드', keywords: '지도 월드 이동 워프 야생 지옥 엔더' },
       { href: '/commands', title: '명령어 모음', description: '자주 쓰는 플레이어 명령어', keywords: '명령 커맨드 도움말' }
@@ -30,8 +31,16 @@ export const wikiSections: WikiSection[] = [
       { href: '/guide/basic/village', title: '마을', description: '점유, 그룹, 손님, 조공, 세금과 레벨', keywords: '마을 클레임 점유 그룹 조공 세금 비행' },
       { href: '/guide/basic/travel', title: '이동과 홈', description: '개인 홈, 공개 홈, 랜덤 이동과 엘리베이터', keywords: '홈 셋홈 공개홈 rtp back 엘리베이터 이동' },
       { href: '/guide/basic/bag', title: '가방', description: '보관 공간, 확장 비용과 자동 수집', keywords: '가방 인벤토리 확장 자동획득' },
-      { href: '/guide/basic/diving-chair', title: '잠수 의자', description: '잠수 보상과 별 판매 방법', keywords: '잠수 의자 별 판매' },
-      { href: '/guide/basic/benefits', title: '등급 혜택', description: '츄르냥, 골드츄르냥, 로얄츄르냥', keywords: '후원 등급 혜택 vip 제작대 셜커' }
+      { href: '/guide/basic/mailbox', title: '우편함', description: '아이템 발송, 수령과 보관 한도', keywords: '우편 메일 발송 수령 보관함' },
+      { href: '/guide/basic/shop', title: '상점과 거래', description: '거래소, 후원상점, 생활상점과 물물교환', keywords: '상점 거래소 후원상점 츄르 물물교환' },
+      { href: '/guide/basic/diving-chair', title: '잠수 의자', description: '잠수 보상과 별 판매 방법', keywords: '잠수 의자 별 판매 포인트' }
+    ]
+  },
+  {
+    title: '후원',
+    eyebrow: 'SUPPORT',
+    entries: [
+      { href: '/support/membership', title: '츄르냥 멤버십', description: '츄르냥 등급별 혜택과 이용권 사용법', keywords: '후원 멤버십 츄르냥 골드츄르냥 로얄츄르냥 혜택 이용권 vip' }
     ]
   },
   {

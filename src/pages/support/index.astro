@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const guides = [
+  {
+    href: '/support/membership',
+    no: '01',
+    title: '츄르냥 멤버십',
+    text: '츄르냥·골드츄르냥·로얄츄르냥의 누적 혜택과 이용권 사용법',
+    tag: '등급 혜택'
+  },
+  {
+    href: '/guide/basic/shop#후원상점',
+    no: '02',
+    title: '후원상점',
+    text: '츄르 재화로 이용하는 후원상점과 현재 등록된 상품',
+    tag: '상점'
+  }
+];
+---
+
+<BaseLayout title="후원 안내 | 츄르월드" description="츄르월드 멤버십 혜택과 후원상점 이용 안내" pathname="/support">
+  <section class="index-hero warm-hero">
+    <div>
+      <span class="kicker">SUPPORT &amp; MEMBERSHIP</span>
+      <h1>후원과 멤버십 안내</h1>
+      <p>츄르냥 멤버십은 정착과 이동을 편리하게 만드는 기간제 혜택입니다. 등급별 차이와 이용권 적용 방식을 구매 전에 확인하세요.</p>
+    </div>
+    <div class="index-hero-side">
+      <img src="/assets/lifecore/chru.png" alt="" />
+      <span><b>30일 이용권</b>같은 등급은 남은 기간에 누적 적용</span>
+    </div>
+  </section>
+
+  <section class="guide-index">
+    <div class="section-heading">
+      <div><span class="kicker">SUPPORT GUIDE</span><h2>후원 문서</h2></div>
+      <button class="section-link as-button" type="button" data-search-open>문서 검색 →</button>
+    </div>
+    <div class="guide-list-grid">
+      {guides.map((guide) => (
+        <a class="guide-list-card" href={guide.href}>
+          <span class="guide-no">{guide.no}</span>
+          <div><small>{guide.tag}</small><h3>{guide.title}</h3><p>{guide.text}</p></div>
+          <b>→</b>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="tip-banner">
+    <b>게임 안에서는</b>
+    <span><code>/혜택</code>으로 등급별 적용 내용을 다시 확인할 수 있습니다.</span>
+    <a href="/support/membership">멤버십 비교 보기 →</a>
+  </section>
+</BaseLayout>

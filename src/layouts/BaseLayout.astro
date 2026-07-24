@@ -6,6 +6,7 @@ const nav = [
   { href: '/', label: '홈', exact: true },
   { href: '/guide/basic', label: '시작하기' },
   { href: '/life', label: '생활 · 생산' },
+  { href: '/support', label: '후원' },
   { href: '/map', label: '월드 안내', exact: true },
   { href: '/commands', label: '명령어', exact: true }
 ];
@@ -73,9 +74,10 @@ const isActive = (item: (typeof nav)[number]) => item.exact ? pathname === item.
         <div class="footer-links">
           <a href="/guide/basic">시작하기</a>
           <a href="/life">생활 · 생산</a>
+          <a href="/support">후원</a>
           <a href="/rules">서버 규칙</a>
           <a href="/terms">이용 약관</a>
-          <a href="https://discord.gg/cKUe95ZBg" target="_blank" rel="noreferrer">디스코드</a>
+          <a href="https://discord.gg/44rfkHzhNV" target="_blank" rel="noreferrer">디스코드</a>
         </div>
       </div>
     </footer>
@@ -84,7 +86,7 @@ const isActive = (item: (typeof nav)[number]) => item.exact ? pathname === item.
       <div class="search-panel">
         <div class="search-field">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.4a7.75 7.75 0 1 1-15.5 0 7.75 7.75 0 0 1 15.5 0Z" /></svg>
-          <input id="wikiSearchInput" type="search" placeholder="마을, 낚시, 가방, 명령어…" autocomplete="off" />
+          <input id="wikiSearchInput" type="search" placeholder="마을, 낚시, 후원, 우편함…" autocomplete="off" />
           <button type="button" data-search-close aria-label="검색 닫기">ESC</button>
         </div>
         <p class="search-hint">찾는 내용을 입력하거나 아래 문서를 선택하세요.</p>

@@ -7,11 +7,18 @@ const heroLabel = badge || title;
 const section = findSection(pathname);
 const current = section?.entries.find((entry) => entry.href === pathname);
 const image = current?.icon ? `/assets/lifecore/${current.icon}` : null;
+const sectionHome = section?.eyebrow === 'LIFE CONTENTS' || section?.eyebrow === 'PRODUCTION' || section?.eyebrow === 'LIFE GUIDE'
+  ? '/life'
+  : section?.eyebrow === 'SUPPORT'
+    ? '/support'
+    : section?.eyebrow === 'SERVER INFO'
+      ? '/'
+      : '/guide/basic';
 ---
 <BaseLayout title={`${title} | 츄르월드`} description={description} pathname={pathname}>
   <div class="doc-layout">
     <aside class="doc-sidebar" aria-label="문서 탐색">
-      <a class="sidebar-home" href={section?.eyebrow === 'LIFE CONTENTS' ? '/life' : '/guide/basic'}>
+      <a class="sidebar-home" href={sectionHome}>
         <span>{section?.eyebrow ?? 'CHUR WORLD'}</span>
         <strong>{section?.title ?? '서버 안내'}</strong>
       </a>
