@@ -49,7 +49,7 @@ export const wikiSections: WikiSection[] = [
     entries: [
       { href: '/life/miner', title: '광부', description: '광석, 광맥, 채굴 스킬과 감지', keywords: '채광 광산 광맥 스캔', icon: 'lifemine.png' },
       { href: '/life/fisher', title: '어부', description: '낚시 미니게임, 등급, 조각과 파츠', keywords: '낚시 물고기 파츠 보물', icon: 'lifefish.png' },
-      { href: '/life/farmer', title: '농부', description: '커스텀 작물, 수확 등급과 농사 스킬', keywords: '농사 작물 씨앗 수확', icon: 'lifefarm.png' },
+      { href: '/life/farmer', title: '농부', description: '커스텀 작물, 농사 장비, 수확 등급과 스킬', keywords: '농사 작물 씨앗 수확 화분 물뿌리개 스프링클러 스프링쿨러 비닐하우스 허수아비', icon: 'lifefarm.png' },
       { href: '/life/woodcutter', title: '나무꾼', description: '벌목, 커스텀 나무와 나무꾼 스킬', keywords: '벌목 나무 커스텀 나무 도끼', icon: 'lifewoodcutter.png' }
     ]
   },
