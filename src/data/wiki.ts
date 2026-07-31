@@ -48,7 +48,7 @@ export const wikiSections: WikiSection[] = [
     eyebrow: 'LIFE CONTENTS',
     entries: [
       { href: '/life/miner', title: '광부', description: '광석, 광맥, 채굴 스킬과 감지', keywords: '채광 광산 광맥 스캔', icon: 'lifemine.png' },
-      { href: '/life/fisher', title: '어부', description: '낚시 미니게임, 등급, 조각과 파츠', keywords: '낚시 물고기 파츠 보물', icon: 'lifefish.png' },
+      { href: '/life/fisher', title: '어부', description: '낚시 미니게임, 등급, 조각과 파츠', keywords: '낚시 물고기 파츠 바늘 줄 릴 타이밍 균형 화살표 보물', icon: 'lifefish.png' },
       { href: '/life/farmer', title: '농부', description: '커스텀 작물, 농사 장비, 수확 등급과 스킬', keywords: '농사 작물 씨앗 수확 화분 물뿌리개 스프링클러 스프링쿨러 비닐하우스 허수아비', icon: 'lifefarm.png' },
       { href: '/life/woodcutter', title: '나무꾼', description: '벌목, 커스텀 나무와 나무꾼 스킬', keywords: '벌목 나무 커스텀 나무 도끼', icon: 'lifewoodcutter.png' }
     ]
@@ -75,7 +75,7 @@ export const wikiSections: WikiSection[] = [
     eyebrow: 'SERVER INFO',
     entries: [
       { href: '/notice', title: '공지사항', description: '서버 운영 소식과 업데이트', keywords: '공지 업데이트 소식' },
-      { href: '/rules', title: '서버 규칙', description: '함께 지켜야 할 이용 기준', keywords: '규칙 제재 신고' },
+      { href: '/rules', title: '서버 규칙', description: '마인크래프트와 디스코드에서 함께 지켜야 할 이용 기준', keywords: '규칙 제재 신고 디스코드 개인 DM 공장 자동화 호퍼 채굴 동물 스포너' },
       { href: '/terms', title: '이용 약관', description: '서비스 이용 및 운영 정책', keywords: '약관 정책' }
     ]
   }
