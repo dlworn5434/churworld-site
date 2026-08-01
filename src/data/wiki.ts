@@ -28,7 +28,7 @@ export const wikiSections: WikiSection[] = [
     title: '정착과 편의',
     eyebrow: 'SETTLEMENT',
     entries: [
-      { href: '/guide/basic/village', title: '마을', description: '점유, 그룹, 손님, 조공, 세금과 레벨', keywords: '마을 클레임 점유 그룹 조공 세금 비행' },
+      { href: '/guide/basic/village', title: '마을', description: '점유 청크, 경작지, 그룹, 조공, 세금과 레벨', keywords: '마을 클레임 점유 청크 비용 경작지 농지 그룹 조공 세금 비행' },
       { href: '/guide/basic/travel', title: '이동과 홈', description: '개인 홈, 공개 홈, 랜덤 이동과 엘리베이터', keywords: '홈 셋홈 공개홈 rtp back 엘리베이터 이동' },
       { href: '/guide/basic/bag', title: '가방', description: '보관 공간, 확장 비용과 자동 수집', keywords: '가방 인벤토리 확장 자동획득' },
       { href: '/guide/basic/mailbox', title: '우편함', description: '아이템 발송, 수령과 보관 한도', keywords: '우편 메일 발송 수령 보관함' },
