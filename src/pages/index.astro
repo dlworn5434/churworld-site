@@ -104,7 +104,10 @@ const wikiCards = [
   <section class="home-section">
     <div class="section-heading">
       <div><span class="kicker">WIKI CATEGORIES</span><h2>필요한 정보만 빠르게</h2></div>
-      <button class="section-link as-button" type="button" data-search-open>전체 문서 검색 →</button>
+      <div class="section-actions">
+        <button class="section-link as-button" type="button" data-catalog-open aria-controls="wikiCatalog" aria-expanded="false">전체 목차 보기 →</button>
+        <button class="section-link as-button" type="button" data-search-open>문서 검색 →</button>
+      </div>
     </div>
     <div class="wiki-card-grid">
       {wikiCards.map((card) => (

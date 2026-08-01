@@ -1,5 +1,5 @@
 ---
-import { searchEntries } from '../data/wiki';
+import { searchEntries, wikiSections } from '../data/wiki';
 
 const { title = '츄르월드', description = '츄르월드 서버 위키', pathname = '/' } = Astro.props;
 const nav = [
@@ -62,6 +62,11 @@ const isActive = (item: (typeof nav)[number]) => item.exact ? pathname === item.
       <slot />
     </main>
 
+    <button class="catalog-trigger" type="button" data-catalog-open aria-controls="wikiCatalog" aria-expanded="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16M4 12h16M4 19h16M8 5v14" /></svg>
+      <span>전체 목차</span>
+    </button>
+
     <footer class="footer">
       <div class="wrap footer-inner">
         <div class="footer-brand">
@@ -81,6 +86,38 @@ const isActive = (item: (typeof nav)[number]) => item.exact ? pathname === item.
         </div>
       </div>
     </footer>
+
+    <dialog class="catalog-dialog" id="wikiCatalog" aria-labelledby="wikiCatalogTitle">
+      <div class="catalog-panel">
+        <header class="catalog-header">
+          <div>
+            <span>ALL WIKI PAGES</span>
+            <h2 id="wikiCatalogTitle">전체 목차</h2>
+            <p>카테고리를 오가지 않고 모든 문서를 바로 열 수 있어요.</p>
+          </div>
+          <button type="button" data-catalog-close aria-label="전체 목차 닫기">×</button>
+        </header>
+        <div class="catalog-sections">
+          {wikiSections.map((section) => (
+            <section class="catalog-section">
+              <div class="catalog-section-title">
+                <span>{section.eyebrow}</span>
+                <h3>{section.title}</h3>
+              </div>
+              <nav aria-label={`${section.title} 문서`}>
+                {section.entries.map((entry) => (
+                  <a href={entry.href} class={pathname === entry.href ? 'active' : ''}>
+                    <strong>{entry.title}</strong>
+                    <small>{entry.description}</small>
+                    <i aria-hidden="true">→</i>
+                  </a>
+                ))}
+              </nav>
+            </section>
+          ))}
+        </div>
+      </div>
+    </dialog>
 
     <dialog class="search-dialog" id="wikiSearch" aria-label="위키 검색">
       <div class="search-panel">
@@ -104,12 +141,14 @@ const isActive = (item: (typeof nav)[number]) => item.exact ? pathname === item.
 
     <script>
       const dialog = document.querySelector('#wikiSearch');
+      const catalog = document.querySelector('#wikiCatalog');
       const input = document.querySelector('#wikiSearchInput');
       const empty = document.querySelector('#wikiSearchEmpty');
       const items = [...document.querySelectorAll('[data-search-item]')];
 
       function openSearch() {
         if (!(dialog instanceof HTMLDialogElement)) return;
+        if (catalog instanceof HTMLDialogElement && catalog.open) catalog.close();
         dialog.showModal();
         requestAnimationFrame(() => input instanceof HTMLInputElement && input.focus());
       }
@@ -118,10 +157,31 @@ const isActive = (item: (typeof nav)[number]) => item.exact ? pathname === item.
         if (dialog instanceof HTMLDialogElement) dialog.close();
       }
 
+      function openCatalog() {
+        if (!(catalog instanceof HTMLDialogElement)) return;
+        if (dialog instanceof HTMLDialogElement && dialog.open) dialog.close();
+        catalog.showModal();
+        document.body.classList.add('catalog-is-open');
+        document.querySelectorAll('[data-catalog-open]').forEach((button) => button.setAttribute('aria-expanded', 'true'));
+      }
+
+      function closeCatalog() {
+        if (catalog instanceof HTMLDialogElement) catalog.close();
+      }
+
       document.querySelectorAll('[data-search-open]').forEach((button) => button.addEventListener('click', openSearch));
       document.querySelector('[data-search-close]')?.addEventListener('click', closeSearch);
+      document.querySelectorAll('[data-catalog-open]').forEach((button) => button.addEventListener('click', openCatalog));
+      document.querySelector('[data-catalog-close]')?.addEventListener('click', closeCatalog);
       dialog?.addEventListener('click', (event) => {
         if (event.target === dialog) closeSearch();
+      });
+      catalog?.addEventListener('click', (event) => {
+        if (event.target === catalog) closeCatalog();
+      });
+      catalog?.addEventListener('close', () => {
+        document.body.classList.remove('catalog-is-open');
+        document.querySelectorAll('[data-catalog-open]').forEach((button) => button.setAttribute('aria-expanded', 'false'));
       });
       document.addEventListener('keydown', (event) => {
         const target = event.target;
