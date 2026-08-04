@@ -30,6 +30,7 @@ pathname: /commands
 | `/life skills fishing` | 어부 스킬 GUI |
 | `/life skills woodcutting` | 나무꾼 스킬 GUI |
 | `/life fishing` | 어부 메뉴 바로 열기 |
+| `/life 도감` | 생활 도감 열기. `/life codex`도 가능 |
 | `/life scan` | 광석 감지 시작 |
 | `/life scan off` | 광석 감지 종료 |
 | `/life scan mode distance` | 가까운 광석부터 표시 |
@@ -42,6 +43,8 @@ pathname: /commands
 | `/life skills cooking` | 요리사 스킬 GUI |
 | `/life skills smithing` | 대장술 스킬 GUI |
 | `/life recipes` | 요리 레시피북 열기 |
+| `/제작 로그 대기열` | 진행 중인 생활 제작 확인 |
+| `/제작 로그 [수]` | 최근 생활 제작 결과 확인 |
 
 ## 생활·생산 공통
 
@@ -49,6 +52,9 @@ pathname: /commands
 | --- | --- |
 | `/life mana` | 현재 마나 확인 |
 | `/경험치` | 적용 중인 경험치 증가 확인 |
+| `/큐브 검사` | 주 손 드라코라이트 방어구의 잠재능력 확인 |
+| `/큐브 수령` | 완료되거나 선택 대기 중인 큐브 결과 받기 |
+| `/장비강화` | 주 손의 본인 각인 드라코라이트 방어구 강화 |
 
 ## 이동과 홈
 

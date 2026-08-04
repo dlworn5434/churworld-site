@@ -33,7 +33,7 @@ export const wikiSections: WikiSection[] = [
       { href: '/guide/basic/bag', title: '가방', description: '보관 공간, 확장 비용과 자동 수집', keywords: '가방 인벤토리 확장 자동획득' },
       { href: '/guide/basic/mailbox', title: '우편함', description: '아이템 발송, 수령과 보관 한도', keywords: '우편 메일 발송 수령 보관함' },
       { href: '/guide/basic/shop', title: '상점과 거래', description: '거래소, 후원상점, 생활상점과 물물교환', keywords: '상점 거래소 후원상점 츄르 물물교환' },
-      { href: '/guide/basic/diving-chair', title: '잠수 의자', description: '잠수 보상과 별 판매 방법', keywords: '잠수 의자 별 판매 포인트' }
+      { href: '/guide/basic/diving-chair', title: '잠수 의자', description: '일반·프리미엄 의자, 별 보상과 포인트 상점', keywords: '잠수 의자 별 판매 포인트 스폰 월드 프리미엄 음성채널 디스코드' }
     ]
   },
   {
@@ -66,7 +66,10 @@ export const wikiSections: WikiSection[] = [
     eyebrow: 'LIFE GUIDE',
     entries: [
       { href: '/life/growth', title: '성장 구조', description: '공용 레벨, 직업별 숙련도와 스탯', keywords: '근로 지식 감각 행운 숙련도 생산', icon: 'lifework.png' },
-      { href: '/life/systems', title: '작업대와 시스템', description: '생활·생산 작업대와 공용 시스템', keywords: '작업대 화로 의뢰 제작 생산', icon: 'lifeknowledge.png' },
+      { href: '/life/recipes', title: '생활 제작법', description: '작업대, 농사 장비, 큐브와 드라코라이트 제작 재료', keywords: '제작법 조합법 재료 작업대 흔한 화로 물뿌리개 스프링클러 큐브 드라코라이트', icon: 'lifeblacksmith.png' },
+      { href: '/life/equipment', title: '장비와 큐브', description: '드라코라이트 각인, 잠재능력, 가열과 별 강화', keywords: '드라코라이트 소유권 각인 제거 큐브 재설정 보존 잠재등급 레어 에픽 유니크 레전드리 가열 장비강화', icon: 'lifesense.png' },
+      { href: '/life/codex', title: '생활 도감', description: '생활 아이템 등록과 직업별 영구 보상', keywords: '도감 수집 등록 영구보상 채광 농사 낚시 요리 벌목 골드 3성', icon: 'lifeknowledge.png' },
+      { href: '/life/systems', title: '주요 시스템', description: '제작, 도감, 장비 성장, 길라잡이와 의뢰', keywords: '작업대 화로 의뢰 제작 도감 큐브 장비 생산', icon: 'lifeknowledge.png' },
       { href: '/life/faq', title: '생활·생산 FAQ', description: '생활·생산 콘텐츠 자주 묻는 질문', keywords: '질문 도움 생산' }
     ]
   },
