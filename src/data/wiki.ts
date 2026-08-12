@@ -29,12 +29,13 @@ export const wikiSections: WikiSection[] = [
     eyebrow: 'SETTLEMENT',
     entries: [
       { href: '/guide/basic/village', title: '마을', description: '점유 청크, 경작지, 그룹, 조공, 세금과 레벨', keywords: '마을 클레임 점유 청크 비용 경작지 농지 그룹 조공 세금 비행' },
+      { href: '/guide/basic/construction', title: '마을 건축', description: '건설 도면, 도구함, 장식 가구와 효과 타워', keywords: '마을 건축 건설 도면 건차 도구함 장식 가구 중세 시장 주점 효과 타워 나무신 땅의신 HybridBuild' },
       { href: '/guide/basic/travel', title: '이동과 홈', description: '개인 홈, 공개 홈, 랜덤 이동과 엘리베이터', keywords: '홈 셋홈 공개홈 rtp back 엘리베이터 이동' },
       { href: '/guide/basic/bag', title: '가방', description: '보관 공간, 확장 비용과 자동 수집', keywords: '가방 인벤토리 확장 자동획득' },
       { href: '/guide/basic/mailbox', title: '우편함', description: '아이템 발송, 수령과 보관 한도', keywords: '우편 메일 발송 수령 보관함' },
       { href: '/guide/basic/shop', title: '상점과 거래', description: '거래소, 후원상점, 생활상점과 물물교환', keywords: '상점 거래소 후원상점 츄르 물물교환' },
       { href: '/guide/basic/marketplace', title: '유저 거래소', description: '추천 이용 조건, 판매 등록, 보관함과 정산', keywords: '거래소 등록 판매 검색 수수료 보관함 정산 추천' },
-      { href: '/guide/basic/economy', title: '재화·교환·ATM', description: '돈 보내기, 재화 조회, 물물교환과 츄르 환전', keywords: '돈보내기 재화 물물교환 작물교환 ATM 츄르 환전' },
+      { href: '/guide/basic/economy', title: '재화·교환·ATM', description: '돈 보내기, 재화 조회, 물물교환과 츄르 환전', keywords: '돈보내기 송금 pay 재화 물물교환 작물교환 ATM 츄르 환전' },
       { href: '/guide/basic/requests', title: '의뢰', description: '일일·주간·월간 목표와 새로고침', keywords: '의뢰 퀘스트 일일 주간 월간 새로고침 보상' },
       { href: '/guide/basic/codi', title: '코디와 뽑기', description: '코디 보관함과 코디·도구 스킨 뽑기', keywords: '코디 치장 뽑기 도구스킨 마일리지 모자 날개' },
       { href: '/guide/basic/drawing', title: '그림과 이젤', description: '이젤에서 그림을 그리고 저장·지도 출력', keywords: '그림 이젤 daub 저장 지도 작품 붓' },
@@ -73,7 +74,7 @@ export const wikiSections: WikiSection[] = [
       { href: '/life/growth', title: '성장 구조', description: '공용 레벨, 직업별 숙련도와 스탯', keywords: '근로 지식 감각 행운 숙련도 생산', icon: 'lifework.png' },
       { href: '/life/recipes', title: '생활 제작법', description: '작업대, 농사 장비, 큐브와 드라코라이트 제작 재료', keywords: '제작법 조합법 재료 작업대 흔한 화로 물뿌리개 스프링클러 큐브 드라코라이트', icon: 'lifeblacksmith.png' },
       { href: '/life/equipment', title: '장비와 큐브', description: '드라코라이트 각인, 잠재능력과 큐브 가열', keywords: '드라코라이트 소유권 각인 제거 큐브 재설정 보존 잠재등급 레어 에픽 유니크 레전드리 가열', icon: 'lifesense.png' },
-      { href: '/life/codex', title: '생활 도감', description: '현재 준비 중인 생활 도감 안내', keywords: '도감 준비중 수집 등록 보상', icon: 'lifeknowledge.png' },
+      { href: '/life/codex', title: '생활 도감', description: '생활 아이템 등록과 직업별 영구 보상', keywords: '생활 도감 수집 등록 보상 채광 농사 낚시 요리 벌목', icon: 'lifeknowledge.png' },
       { href: '/life/systems', title: '주요 시스템', description: '제작, 도감, 장비 성장, 길라잡이와 의뢰', keywords: '작업대 화로 의뢰 제작 도감 큐브 장비 생산', icon: 'lifeknowledge.png' },
       { href: '/life/faq', title: '생활·생산 FAQ', description: '생활·생산 콘텐츠 자주 묻는 질문', keywords: '질문 도움 생산' }
     ]
