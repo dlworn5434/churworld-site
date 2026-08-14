@@ -28,8 +28,8 @@ export const wikiSections: WikiSection[] = [
     title: '정착과 편의',
     eyebrow: 'SETTLEMENT',
     entries: [
-      { href: '/guide/basic/village', title: '마을', description: '점유 청크, 경작지, 그룹, 조공, 세금과 레벨', keywords: '마을 클레임 점유 청크 비용 경작지 농지 그룹 조공 세금 비행' },
-      { href: '/guide/basic/construction', title: '마을 건축', description: '건설 도면, 도구함, 장식 가구와 효과 타워', keywords: '마을 건축 건설 도면 건차 도구함 장식 가구 중세 시장 주점 효과 타워 나무신 땅의신 HybridBuild' },
+      { href: '/guide/basic/village', title: '마을', description: '점유 청크, 경작지, 그룹, 손님, 세금과 로그', keywords: '마을 클레임 점유 청크 비용 경작지 농지 그룹 조공 세금 비행 초대 손님 로그 로그막대기 랭킹' },
+      { href: '/guide/basic/construction', title: '마을 건축', description: '건설 도면, 건차, 장식 가구와 효과 타워', keywords: '마을 건축 건설 도면 츄르 코인 건차 도구함 원목 묶음 장식 가구 앉기 눕기 중세 시장 주점 효과 타워 나무신 땅의신 HybridBuild' },
       { href: '/guide/basic/travel', title: '이동과 홈', description: '개인 홈, 공개 홈, 랜덤 이동과 엘리베이터', keywords: '홈 셋홈 공개홈 rtp back 엘리베이터 이동' },
       { href: '/guide/basic/bag', title: '가방', description: '보관 공간, 확장 비용과 자동 수집', keywords: '가방 인벤토리 확장 자동획득' },
       { href: '/guide/basic/mailbox', title: '우편함', description: '아이템 발송, 수령과 보관 한도', keywords: '우편 메일 발송 수령 보관함' },
@@ -71,11 +71,11 @@ export const wikiSections: WikiSection[] = [
     title: '생활·생산 안내',
     eyebrow: 'LIFE GUIDE',
     entries: [
-      { href: '/life/growth', title: '성장 구조', description: '공용 레벨, 직업별 숙련도와 스탯', keywords: '근로 지식 감각 행운 숙련도 생산', icon: 'lifework.png' },
-      { href: '/life/recipes', title: '생활 제작법', description: '작업대, 농사 장비, 큐브와 드라코라이트 제작 재료', keywords: '제작법 조합법 재료 작업대 흔한 화로 물뿌리개 스프링클러 큐브 드라코라이트', icon: 'lifeblacksmith.png' },
-      { href: '/life/equipment', title: '장비와 큐브', description: '드라코라이트 각인, 잠재능력과 큐브 가열', keywords: '드라코라이트 소유권 각인 제거 큐브 재설정 보존 잠재등급 레어 에픽 유니크 레전드리 가열', icon: 'lifesense.png' },
-      { href: '/life/codex', title: '생활 도감', description: '생활 아이템 등록과 직업별 영구 보상', keywords: '생활 도감 수집 등록 보상 채광 농사 낚시 요리 벌목', icon: 'lifeknowledge.png' },
-      { href: '/life/systems', title: '주요 시스템', description: '제작, 도감, 장비 성장, 길라잡이와 의뢰', keywords: '작업대 화로 의뢰 제작 도감 큐브 장비 생산', icon: 'lifeknowledge.png' },
+      { href: '/life/growth', title: '성장 구조', description: '공용 레벨, 직업별 숙련도와 스탯 투자', keywords: '근로 지식 감각 행운 스탯 투자 포인트 장비 합산 숙련도 생산', icon: 'lifework.png' },
+      { href: '/life/recipes', title: '생활 제작법', description: '작업대, 농사 장비, 강화석, 큐브와 드라코라이트 제작', keywords: '제작법 조합법 재료 작업대 흔한 화로 물뿌리개 스프링클러 생활 조각 강화석 큐브 드라코라이트', icon: 'lifeblacksmith.png' },
+      { href: '/life/equipment', title: '장비와 큐브', description: '드라코라이트 각인, 기본 스탯 분배와 잠재능력', keywords: '드라코라이트 소유권 각인 제거 장비스탯 스탯분배 주문서 기억의 돌 근로 지식 감각 행운 큐브 재설정 보존 잠재등급 가열', icon: 'lifesense.png' },
+      { href: '/life/codex', title: '생활 도감', description: '생활·생존 아이템 등록과 영구 보상', keywords: '생활 도감 수집 등록 보상 채광 농사 낚시 요리 벌목 생존 검 몬스터 드롭 허기 마나', icon: 'lifeknowledge.png' },
+      { href: '/life/systems', title: '주요 시스템', description: '제작, 도감, 생활 조각, 마나와 장비 성장', keywords: '작업대 화로 의뢰 제작 도감 생활 조각 강화석 마나 저장 큐브 장비 생산', icon: 'lifeknowledge.png' },
       { href: '/life/faq', title: '생활·생산 FAQ', description: '생활·생산 콘텐츠 자주 묻는 질문', keywords: '질문 도움 생산' }
     ]
   },
