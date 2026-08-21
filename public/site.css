@@ -35,7 +35,8 @@ body {
   font-family: Pretendard, "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
   word-break: keep-all;
 }
-html, body { overflow-x: hidden; }
+/* `hidden`은 일부 브라우저에서 상단 sticky 헤더의 기준을 바꿔 목차 위에 빈칸을 남긴다. */
+html, body { overflow-x: clip; }
 body.catalog-is-open { overflow: hidden; }
 
 .catalog-rail { display: none; }
