@@ -38,6 +38,8 @@ body {
 html, body { overflow-x: hidden; }
 body.catalog-is-open { overflow: hidden; }
 
+.catalog-rail { display: none; }
+
 body::before {
   content: "";
   position: fixed;
@@ -361,7 +363,7 @@ kbd { padding: 3px 7px; background: var(--surface); border: 1px solid var(--line
 .catalog-trigger {
   position: fixed;
   top: 46%;
-  right: 0;
+  left: 0;
   z-index: 48;
   display: flex;
   align-items: center;
@@ -370,8 +372,8 @@ kbd { padding: 3px 7px; background: var(--surface); border: 1px solid var(--line
   color: #fffdf5;
   background: var(--olive-dark);
   border: 1px solid rgba(255,255,255,.18);
-  border-right: 0;
-  border-radius: 9px 0 0 9px;
+  border-left: 0;
+  border-radius: 0 9px 9px 0;
   box-shadow: 0 12px 28px rgba(37,38,29,.22);
   cursor: pointer;
   writing-mode: vertical-rl;
@@ -384,17 +386,96 @@ kbd { padding: 3px 7px; background: var(--surface); border: 1px solid var(--line
   max-width: none;
   height: 100dvh;
   max-height: none;
-  margin: 0 0 0 auto;
+  margin: 0 auto 0 0;
   padding: 0;
   overflow: hidden;
   color: var(--ink);
   background: var(--surface);
   border: 0;
-  border-left: 1px solid var(--line-dark);
-  box-shadow: -24px 0 70px rgba(28,27,22,.28);
+  border-right: 1px solid var(--line-dark);
+  box-shadow: 24px 0 70px rgba(28,27,22,.28);
 }
 .catalog-dialog::backdrop { background: rgba(25,26,22,.62); backdrop-filter: blur(3px); }
 .catalog-panel { height: 100%; overflow-y: auto; }
+
+@media (min-width: 1200px) {
+  .catalog-rail {
+    position: fixed;
+    top: 74px;
+    bottom: 0;
+    left: 0;
+    z-index: 40;
+    display: block;
+    width: 240px;
+    overflow-y: auto;
+    color: var(--ink);
+    background: rgba(255,253,247,.98);
+    border-right: 1px solid var(--line-dark);
+    box-shadow: 12px 0 32px rgba(55,48,35,.07);
+  }
+  .catalog-rail-head {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: 20px 17px 16px;
+    background: rgba(255,253,247,.98);
+    border-bottom: 1px solid var(--line);
+  }
+  .catalog-rail-head > span, .catalog-rail-title span {
+    display: block;
+    color: var(--olive-dark);
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: .14em;
+  }
+  .catalog-rail-head > strong { display: block; margin-top: 4px; font-size: 19px; }
+  .catalog-rail-head p { margin: 5px 0 12px; color: var(--muted); font-size: 11px; }
+  .catalog-rail-head button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 10px;
+    color: var(--ink-soft);
+    background: var(--surface-soft);
+    border: 1px solid var(--line);
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+    text-align: left;
+  }
+  .catalog-rail-head button:hover { color: var(--olive-dark); border-color: var(--olive); }
+  .catalog-rail-head button svg { width: 14px; fill: none; stroke: currentColor; stroke-width: 1.8; }
+  .catalog-rail-sections { display: block; padding: 7px 0 24px; }
+  .catalog-rail-sections section { margin: 0; padding: 12px 13px 8px; border-bottom: 1px solid var(--line); }
+  .catalog-rail-title { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; padding: 0 5px 6px; }
+  .catalog-rail-title strong { font-size: 12px; }
+  .catalog-rail-links { display: grid; gap: 1px; }
+  .catalog-rail-links a {
+    display: block;
+    padding: 6px 8px;
+    color: var(--muted);
+    border-left: 2px solid transparent;
+    border-radius: 0 6px 6px 0;
+    font-size: 11px;
+    line-height: 1.25;
+  }
+  .catalog-rail-links a:hover { color: var(--ink); background: var(--surface-soft); }
+  .catalog-rail-links a.active { color: var(--olive-dark); background: var(--olive-soft); border-left-color: var(--olive); font-weight: 800; }
+  body > main.wrap, .footer > .wrap {
+    width: min(1180px, calc(100% - 280px));
+    margin-right: auto;
+    margin-left: max(260px, calc((100vw - 940px) / 2));
+  }
+  .catalog-trigger { display: none; }
+  .section-actions [data-catalog-open] { display: none; }
+  .doc-layout { grid-template-columns: minmax(0, 1fr) 180px; gap: 20px; }
+  .doc-shell { grid-column: 1; grid-row: 1; }
+  .doc-sidebar { grid-column: 2; grid-row: 1; display: block; padding: 0; }
+  .doc-sidebar .sidebar-home, .doc-sidebar .sidebar-nav { display: none; }
+  .doc-sidebar .sidebar-toc { padding: 18px 0 18px 14px; border-left: 1px solid var(--line); }
+}
 .catalog-header {
   position: sticky;
   top: 0;
@@ -593,7 +674,7 @@ kbd { padding: 3px 7px; background: var(--surface); border: 1px solid var(--line
   .doc-body table { display: block; overflow-x: auto; white-space: nowrap; }
   .doc-end { align-items: flex-start; flex-direction: column; margin: 0 21px; }
   .search-results > a { grid-template-columns: 1fr; gap: 5px; }
-  .catalog-trigger { top: auto; right: 12px; bottom: 14px; padding: 11px 14px; border-right: 1px solid rgba(255,255,255,.18); border-radius: 999px; writing-mode: horizontal-tb; }
+  .catalog-trigger { top: auto; left: 12px; right: auto; bottom: 14px; padding: 11px 14px; border-left: 1px solid rgba(255,255,255,.18); border-radius: 999px; writing-mode: horizontal-tb; }
   .catalog-dialog { width: calc(100% - 12px); }
   .catalog-header { padding: 23px 20px 18px; }
   .catalog-sections { padding: 5px 20px 28px; }

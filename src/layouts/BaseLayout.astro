@@ -51,12 +51,45 @@ const isActive = (item: (typeof nav)[number]) => item.exact ? pathname === item.
             <nav aria-label="모바일 메뉴">
               {nav.map((item) => <a href={item.href}>{item.label}</a>)}
               <a href="/rules">서버 규칙</a>
-              <a href="/notice">공지사항</a>
+              <a href="/notice">위키 안내</a>
             </nav>
           </details>
         </div>
       </div>
     </header>
+
+    <aside class="catalog-rail" aria-label="전체 위키 목차">
+      <div class="catalog-rail-head">
+        <span>ALL WIKI PAGES</span>
+        <strong>전체 목차</strong>
+        <p>원하는 문서를 바로 선택하세요.</p>
+        <button type="button" data-search-open>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.4a7.75 7.75 0 1 1-15.5 0 7.75 7.75 0 0 1 15.5 0Z" /></svg>
+          목차에서 검색
+        </button>
+      </div>
+      <nav class="catalog-rail-sections">
+        {wikiSections.map((section) => (
+          <section>
+            <div class="catalog-rail-title">
+              <span>{section.eyebrow}</span>
+              <strong>{section.title}</strong>
+            </div>
+            <div class="catalog-rail-links">
+              {section.entries.map((entry) => (
+                <a
+                  href={entry.href}
+                  class={pathname === entry.href ? 'active' : ''}
+                  aria-current={pathname === entry.href ? 'page' : undefined}
+                >
+                  {entry.title}
+                </a>
+              ))}
+            </div>
+          </section>
+        ))}
+      </nav>
+    </aside>
 
     <main class="wrap">
       <slot />
