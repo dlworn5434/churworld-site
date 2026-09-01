@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const contents = [
+  {
+    href: '/combat/tower',
+    no: '01',
+    title: '더 타워',
+    text: '1~4명이 30층을 공략하며 무구, 각인, 유물과 탑 전용 장비를 성장시키는 전투 원정',
+    tag: '실시간 전투'
+  },
+  {
+    href: '/combat/echoes',
+    no: '02',
+    title: '잔향록',
+    text: '행동을 예약하고 지역·기술·장비·동행령을 오래 성장시키는 서버 판정형 장기 RPG',
+    tag: '장기 성장'
+  }
+];
+---
+
+<BaseLayout title="전투·모험 | 츄르월드" description="더 타워와 잔향록 전투·모험 콘텐츠 안내" pathname="/combat">
+  <section class="index-hero warm-hero">
+    <div>
+      <span class="kicker">COMBAT &amp; ADVENTURE</span>
+      <h1>전투하고 탐험하며,<br />나만의 기록을 쌓아보세요.</h1>
+      <p>짧고 집중적인 30층 원정부터 접속하지 않은 시간에도 이어지는 장기 성장까지 한곳에서 확인할 수 있습니다.</p>
+    </div>
+  </section>
+
+  <section class="guide-index">
+    <div class="section-heading">
+      <div><span class="kicker">CHOOSE YOUR ADVENTURE</span><h2>전투·모험 콘텐츠</h2></div>
+      <button class="section-link as-button" type="button" data-search-open>문서 검색 →</button>
+    </div>
+    <div class="guide-list-grid">
+      {contents.map((content) => (
+        <a class="guide-list-card" href={content.href}>
+          <span class="guide-no">{content.no}</span>
+          <div><small>{content.tag}</small><h3>{content.title}</h3><p>{content.text}</p></div>
+          <b>→</b>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="tip-banner">
+    <b>접속 전에 확인하세요</b>
+    <span>전투·모험 전용 화면은 츄르월드 전용 클라이언트에서만 정상적으로 이용할 수 있습니다.</span>
+    <a href="/guide/basic/start">접속 안내 보기 →</a>
+  </section>
+</BaseLayout>

@@ -2,9 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 
 const startSteps = [
-  { no: '01', title: '튜토리얼 완료하기', text: '신규 유저는 로비에서 농사·채광·벌목·낚시의 기본 조작을 먼저 체험합니다.', href: '/guide/basic/tutorial' },
-  { no: '02', title: '통합 메뉴 열기', text: '튜토리얼을 마친 뒤 Shift + F로 워프, 생활·생산, 가방과 상점을 확인하세요.', href: '/guide/basic/menu' },
-  { no: '03', title: '직업 하나 골라보기', text: '생활 4종과 생산 2종 중 마음에 드는 직업부터 시작하세요.', href: '/life' }
+  { no: '01', title: '디스코드 가입·계정 인증', text: '공식 디스코드에서 마인크래프트 계정을 인증해 화이트리스트에 등록하세요.', href: '/guide/basic/start' },
+  { no: '02', title: '전용 클라이언트 설치', text: '일반 클라이언트가 아닌 최신 츄르월드 전용 클라이언트로만 접속할 수 있습니다.', href: '/guide/basic/start#가입과-접속-준비' },
+  { no: '03', title: '통합 메뉴 열기', text: '접속 후 Shift + F로 워프, 생활·생산, 전투, 가방과 상점을 확인하세요.', href: '/guide/basic/menu' }
 ];
 
 const jobs = [
@@ -22,7 +22,8 @@ const wikiCards = [
   { title: '마을과 정착', text: '점유, 그룹, 손님, 조공, 세금, 레벨과 마을 비행', href: '/guide/basic/village', label: '정착' },
   { title: '월드와 이동', text: '마을·야생 월드, 홈, 상점 택시, 랜덤 이동과 엘리베이터', href: '/map', label: '이동' },
   { title: '가방과 편의', text: '가방 확장과 자동 수집, 통합 메뉴의 편의 기능', href: '/guide/basic/bag', label: '편의' },
-  { title: '상점과 경제', text: '생활·후원상점, 추천 거래소, 물물교환과 츄르 ATM', href: '/guide/basic/shop', label: '경제' },
+  { title: '상점과 경제', text: '생활·후원상점, 판매·구매 거래소, 물물교환과 츄르 ATM', href: '/guide/basic/shop', label: '경제' },
+  { title: '전투와 모험', text: '1~4인 더 타워와 서버 판정형 RPG 잔향록', href: '/combat', label: '전투' },
   { title: '사진·코디와 즐길거리', text: '카메라와 벽 사진, 코디·장비 스킨, 그림 이젤과 잠수 의자', href: '/guide/basic/camera', label: '콘텐츠' },
   { title: '후원과 멤버십', text: '츄르냥 등급별 홈·잠금·이동·로얄 전용 혜택', href: '/support', label: '후원' },
   { title: '서버 이용 안내', text: '자주 쓰는 명령어, 규칙, 공지와 이용 약관', href: '/commands', label: '안내' }
@@ -42,7 +43,7 @@ const wikiCards = [
       </div>
       <p class="client-note">게임 접속은 츄르월드 전용 클라이언트를 이용해 주세요.</p>
       <div class="hero-actions">
-        <a class="btn primary" href="/guide/basic/start#전용-클라이언트로-접속하기">전용 클라이언트 안내</a>
+        <a class="btn primary" href="/guide/basic/start">가입·전용 클라이언트 안내</a>
         <a class="btn text" href="https://discord.gg/9n4F7rYWVE" target="_blank" rel="noreferrer">디스코드 참여 →</a>
       </div>
     </div>
