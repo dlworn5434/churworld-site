@@ -17,6 +17,7 @@ export const wikiSections: WikiSection[] = [
     title: '처음 오셨나요?',
     eyebrow: 'START HERE',
     entries: [
+      { href: '/guide', title: '빠른 시작 요약', description: '가입, 전용 클라이언트와 첫 활동을 한 페이지로 확인', keywords: '빠른 시작 요약 접속 전용클라이언트 디스코드' },
       { href: '/guide/basic/start', title: '첫걸음 가이드', description: '디스코드 가입·인증, 전용 클라이언트 접속과 추천 진행 순서', keywords: '초보 시작 입문 가입 디스코드 인증 화이트리스트 전용클라이언트 길라잡이' },
       { href: '/guide/basic/tutorial', title: '신규 유저 튜토리얼', description: '생활 핵심 기능 체험과 완료 후 시작 물품', keywords: '튜토리얼 로비 신규 농사 채광 벌목 낚시 시작물품 카메라 건설도면 잠수의자' },
       { href: '/guide/basic/menu', title: '메뉴 사용법', description: 'Shift + F 통합 메뉴와 주요 기능', keywords: '메뉴 단축키 워프 상점 거래소' },
@@ -47,7 +48,8 @@ export const wikiSections: WikiSection[] = [
     title: '후원',
     eyebrow: 'SUPPORT',
     entries: [
-      { href: '/support/membership', title: '츄르냥 멤버십', description: '등급별 가격, 즉시 이동, 수리와 로얄 편의 기능', keywords: '후원 멤버십 츄르냥 골드츄르냥 로얄츄르냥 혜택 이용권 수리 한글닉네임 가방27칸 vip' }
+      { href: '/support/membership', title: '츄르냥 멤버십', description: '등급별 가격, 즉시 이동, 수리와 로얄 편의 기능', keywords: '후원 멤버십 츄르냥 골드츄르냥 로얄츄르냥 혜택 이용권 수리 한글닉네임 가방27칸 vip' },
+      { href: '/guide/basic/benefits', title: '등급 혜택 비교', description: '기본·츄르냥·골드·로얄 등급의 편의 기능 비교', keywords: '등급 혜택 비교 rtp 홈 잠금 제작대 back 수리 가방 비행' }
     ]
   },
   {
@@ -85,7 +87,8 @@ export const wikiSections: WikiSection[] = [
       { href: '/life/equipment', title: '장비·강화·큐브', description: '드라코라이트 각인, 스탯 분배, 별 강화와 큐브', keywords: '드라코라이트 소유권 각인 장비스탯 스탯분배 강화석 별강화 장비강화 큐브 재설정 보존 잠재등급 가열', icon: 'lifesense.png' },
       { href: '/life/codex', title: '생활 도감', description: '8개 대분류 150종 등록과 영구 보상', keywords: '생활 도감 수집 등록 보상 광부 농부 어부 요리사 나무꾼 생존 기타 방어구 고대도시 시련 고고학 허기 마나 체력', icon: 'lifeknowledge.png' },
       { href: '/life/systems', title: '주요 시스템', description: '스킬 랭크, 지역 활력, 생활 조각과 장비 성장', keywords: '스킬랭크 지역활력 작업대 화로 의뢰 도감 생활조각 파편 강화석 마나 큐브 장비 생산 요일 경험치', icon: 'lifeknowledge.png' },
-      { href: '/life/faq', title: '생활·생산 FAQ', description: '생활·생산 콘텐츠 자주 묻는 질문', keywords: '질문 도움 생산' }
+      { href: '/life/faq', title: '생활·생산 FAQ', description: '생활·생산 콘텐츠 자주 묻는 질문', keywords: '질문 도움 생산' },
+      { href: '/guide/life', title: '생활·생산 통합 가이드', description: '운영진이 실시간으로 갱신하는 생활·생산 안내', keywords: '생활 생산 통합 안내 실시간 가이드' }
     ]
   },
   {

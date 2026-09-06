@@ -1,9 +1,10 @@
 ---
-layout: ../layouts/BaseLayout.astro
-title: 츄르월드 시작 가이드
+layout: ../layouts/DocLayout.astro
+title: 츄르월드 빠른 시작
+badge: START HERE
+description: 가입부터 전용 클라이언트 접속과 첫 활동까지 빠르게 확인하는 요약 안내
+pathname: /guide
 ---
-
-# 츄르월드 시작 가이드
 
 츄르월드에 처음 온 걸 환영해!
 

@@ -1,154 +1,144 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const startSteps = [
-  { no: '01', title: '디스코드 가입·계정 인증', text: '공식 디스코드에서 마인크래프트 계정을 인증해 화이트리스트에 등록하세요.', href: '/guide/basic/start' },
-  { no: '02', title: '전용 클라이언트 설치', text: '일반 클라이언트가 아닌 최신 츄르월드 전용 클라이언트로만 접속할 수 있습니다.', href: '/guide/basic/start#가입과-접속-준비' },
-  { no: '03', title: '통합 메뉴 열기', text: '접속 후 Shift + F로 워프, 생활·생산, 전투, 가방과 상점을 확인하세요.', href: '/guide/basic/menu' }
-];
-
 const jobs = [
-  { category: '생활', title: '광부', text: '바닐라 광석과 커스텀 광맥을 채굴하고 보석과 재료를 모읍니다.', href: '/life/miner', image: 'lifemine.png', color: 'stone' },
-  { category: '생활', title: '어부', text: '낚시 미니게임과 장비 파츠, 등급 물고기를 함께 성장시킵니다.', href: '/life/fisher', image: 'lifefish.png', color: 'water' },
-  { category: '생활', title: '농부', text: '커스텀 작물을 기르고 수확 등급과 반복 효율을 높입니다.', href: '/life/farmer', image: 'lifefarm.png', color: 'field' },
-  { category: '생활', title: '나무꾼', text: '원목과 커스텀 나무를 벌목하고 도끼와 채집 효율을 성장시킵니다.', href: '/life/woodcutter', image: 'lifewoodcutter.png', color: 'wood' },
-  { category: '생산', title: '요리사', text: '재료를 조리해 노멀·실버·골드 등급의 요리를 완성합니다.', href: '/life/chef', image: 'lifecook.png', color: 'ember' },
-  { category: '생산', title: '대장술', text: '대장간 화로에서 제련하고 재료 절약과 추가 제작을 노립니다.', href: '/life/blacksmith', image: 'lifeblacksmith.png', color: 'smith' }
+  { title: '광부', description: '광맥을 발견하고 희귀 재료를 모아요', href: '/life/miner', image: 'lifemine.png', tone: 'mine' },
+  { title: '어부', description: '미니게임과 파츠로 손맛을 키워요', href: '/life/fisher', image: 'lifefish.png', tone: 'fish' },
+  { title: '농부', description: '작물과 농사 시설을 관리해요', href: '/life/farmer', image: 'lifefarm.png', tone: 'farm' },
+  { title: '나무꾼', description: '고목과 지역 활력을 활용해요', href: '/life/woodcutter', image: 'lifewoodcutter.png', tone: 'wood' },
+  { title: '요리사', description: '재료를 조리해 등급 요리를 만들어요', href: '/life/chef', image: 'lifecook.png', tone: 'cook' },
+  { title: '대장술', description: '제련과 제작으로 장비 재료를 만들어요', href: '/life/blacksmith', image: 'lifeblacksmith.png', tone: 'smith' }
 ];
 
-const heroJobs = jobs.filter((job) => job.category === '생활');
-
-const wikiCards = [
-  { title: '마을과 정착', text: '점유, 그룹, 손님, 조공, 세금, 레벨과 마을 비행', href: '/guide/basic/village', label: '정착' },
-  { title: '월드와 이동', text: '마을·야생 월드, 홈, 상점 택시, 랜덤 이동과 엘리베이터', href: '/map', label: '이동' },
-  { title: '가방과 편의', text: '가방 확장과 자동 수집, 통합 메뉴의 편의 기능', href: '/guide/basic/bag', label: '편의' },
-  { title: '상점과 경제', text: '생활·후원상점, 판매·구매 거래소, 물물교환과 츄르 ATM', href: '/guide/basic/shop', label: '경제' },
-  { title: '전투와 모험', text: '1~4인 더 타워와 서버 판정형 RPG 잔향록', href: '/combat', label: '전투' },
-  { title: '사진·코디와 즐길거리', text: '카메라와 벽 사진, 코디·장비 스킨, 그림 이젤과 잠수 의자', href: '/guide/basic/camera', label: '콘텐츠' },
-  { title: '후원과 멤버십', text: '츄르냥 등급별 홈·잠금·이동·로얄 전용 혜택', href: '/support', label: '후원' },
-  { title: '서버 이용 안내', text: '자주 쓰는 명령어, 규칙, 공지와 이용 약관', href: '/commands', label: '안내' }
+const quickGuides = [
+  { label: '정착', title: '마을 만들고 점유하기', meta: '생성 · 청크 · 권한', icon: 'settlement', href: '/guide/basic/village' },
+  { label: '성장', title: '생활 스킬과 스탯', meta: '랭크 · 포인트 · 활력', icon: 'growth', href: '/life/growth' },
+  { label: '장비', title: '강화와 큐브 파츠', meta: '각인 · 강화 · 잠재', icon: 'equipment', href: '/life/equipment' },
+  { label: '규칙', title: '꼭 지켜야 할 이용 규칙', meta: '금지 행동 · 경고 · 신고', icon: 'rules', href: '/rules' }
 ];
 ---
 
 <BaseLayout title="츄르월드 위키" description="츄르월드의 생활·생산, 마을, 월드와 편의 기능을 정리한 공식 위키" pathname="/">
-  <section class="home-hero">
-    <div class="home-hero-copy">
-      <span class="kicker">CHUR WORLD · MINECRAFT 1.21.4+</span>
-      <h1>느긋하게 정착하고,<br /><em>나만의 생활</em>을<span class="mobile-break"><br /></span> 만들어 보세요.</h1>
-      <p class="lead">마을을 만들고, 자원을 모으고, 네 생활 직업과 두 생산 직업을 키우는 츄르월드. 필요한 정보는 이 위키에서 빠르게 찾아볼 수 있습니다.</p>
+  <div class="home-view">
+    <div class="welcome-grid">
+      <section class="welcome-card">
+        <div class="welcome-orbit" aria-hidden="true"><span></span><span></span><span></span></div>
+        <div class="welcome-copy">
+          <span class="eyebrow"><i></i>FIRST JOIN · MINECRAFT 1.21.4+</span>
+          <h1>디스코드 가입부터,<br /><em>전용 클라이언트까지.</em></h1>
+          <p>디스코드에 가입해 간편하게 화이트리스트(화리)를 등록하고, 츄르월드 전용 클라이언트를 다운로드해 주세요.</p>
+          <p class="client-required">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7v6M12 17h.01M12 3.5 21 20.5H3Z" /></svg>
+            <strong>전용 클라이언트가 없으면 정상적인 플레이가 어렵습니다.</strong>
+          </p>
+          <div class="hero-actions">
+            <a class="primary-action" href="https://discord.gg/9n4F7rYWVE" target="_blank" rel="noreferrer">디스코드 가입·화리 등록 <span aria-hidden="true">↗</span></a>
+            <a class="secondary-action" href="/guide/basic/start">전용 클라이언트 받기 <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        <div class="welcome-art" aria-hidden="true">
+          <div class="art-glow"></div>
+          <img class="art-main" src="/assets/lifecore/lifeknowledge.png" alt="" />
+          <span class="float-tag tag-one">DISCORD VERIFIED</span>
+          <span class="float-tag tag-two">CLIENT REQUIRED</span>
+        </div>
+      </section>
 
-      <div class="server-address">
-        <div><small>SERVER ADDRESS</small><strong>churworld.kr</strong></div>
-        <button type="button" id="copyBtn">주소 복사</button>
-      </div>
-      <p class="client-note">게임 접속은 츄르월드 전용 클라이언트를 이용해 주세요.</p>
-      <div class="hero-actions">
-        <a class="btn primary" href="/guide/basic/start">가입·전용 클라이언트 안내</a>
-        <a class="btn text" href="https://discord.gg/9n4F7rYWVE" target="_blank" rel="noreferrer">디스코드 참여 →</a>
-      </div>
+      <aside class="server-card">
+        <div class="server-card-head"><span>LIVE SERVER</span><i data-status-dot></i></div>
+        <div class="server-state">
+          <small>현재 서버 상태</small>
+          <strong data-status-text>상태 확인 중</strong>
+          <p>츄르월드 전용 클라이언트로 접속해 주세요.</p>
+        </div>
+        <dl>
+          <div><dt>서버 주소</dt><dd>churworld.kr</dd></div>
+          <div><dt>통합 메뉴</dt><dd>Shift + F</dd></div>
+          <div><dt>지원 버전</dt><dd>1.21.4+</dd></div>
+        </dl>
+        <button type="button" data-copy-address>서버 주소 복사 <span>CTRL + C</span></button>
+      </aside>
     </div>
 
-    <div class="hero-art" aria-label="츄르월드 생활 직업 아이콘">
-      <div class="hero-art-heading">
-        <span>오늘은 어떤 생활을 할까요?</span>
-        <span class="live-state"><i id="statusDot"></i><b id="statusText">상태 확인 중</b></span>
-      </div>
-      <div class="hero-art-grid">
-        {heroJobs.map((job) => (
-          <a href={job.href} class={`art-tile ${job.color}`} aria-label={`${job.title} 문서 보기`}>
-            <img src={`/assets/lifecore/${job.image}`} alt="" />
-            <strong>{job.title}</strong>
+    <section class="section-block quick-section">
+      <header class="section-title">
+        <div><span>QUICK ROUTES</span><h2>무엇을 하러 오셨나요?</h2></div>
+        <p>기능 이름을 몰라도 목적만 고르면 됩니다.</p>
+      </header>
+      <div class="quick-grid">
+        {quickGuides.map((guide, index) => (
+          <a href={guide.href} class={`quick-card quick-${index + 1}`}>
+            <span class="quick-icon">
+              {guide.icon === 'settlement' && (
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 10.5 12 3.5l8.5 7M5.5 9v11h13V9M9.5 20v-6.5h5V20" /></svg>
+              )}
+              {guide.icon === 'growth' && (
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V10M12 13c-3.8 0-6-2.1-6-6 3.8 0 6 2.1 6 6ZM12 10c0-3.8 2.2-6 6-6 0 3.8-2.2 6-6 6ZM6 20h12" /></svg>
+              )}
+              {guide.icon === 'equipment' && (
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5 19 6v5.3c0 4.2-2.5 7.2-7 9.2-4.5-2-7-5-7-9.2V6l7-2.5Zm0 5-3 3 3 3 3-3-3-3Z" /></svg>
+              )}
+              {guide.icon === 'rules' && (
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7L17.5 7v13.5H7ZM14 3.5V7h3.5m-8.5 4 1 1 2-2m1.5 1H16m-7 5 1 1 2-2m1.5 1H16" /></svg>
+              )}
+            </span>
+            <div><small>{guide.label}</small><h3>{guide.title}</h3><p>{guide.meta}</p></div>
+            <svg class="card-arrow" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" /></svg>
           </a>
         ))}
       </div>
-      <div class="hero-art-note"><span>공용 레벨</span><b>생활과 생산 활동을 할수록 함께 성장합니다</b></div>
-    </div>
-  </section>
+    </section>
 
-  <section class="fact-strip" aria-label="서버 핵심 정보">
-    <div><strong>1.21.4+</strong><span>서버 버전</span></div>
-    <div><strong>4 + 2</strong><span>생활 · 생산 직업</span></div>
-    <div><strong>6개</strong><span>야생·마을 월드</span></div>
-    <div><strong>Shift + F</strong><span>통합 메뉴</span></div>
-  </section>
+    <div class="content-grid">
+      <section class="section-block jobs-section">
+        <header class="section-title compact">
+          <div><span>LIFE &amp; PRODUCTION</span><h2>내 생활을 골라보세요</h2></div>
+          <a href="/life">전체 보기 <span aria-hidden="true">→</span></a>
+        </header>
+        <div class="home-job-grid">
+          {jobs.map((job) => (
+            <a href={job.href} class={`home-job-card ${job.tone}`}>
+              <div class="job-image"><img src={`/assets/lifecore/${job.image}`} alt="" loading="lazy" /></div>
+              <div><h3>{job.title}</h3><p>{job.description}</p></div>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
+            </a>
+          ))}
+        </div>
+      </section>
 
-  <section class="home-section start-section">
-    <div class="section-heading">
-      <div><span class="kicker">QUICK START</span><h2>처음이라면 여기부터</h2></div>
-      <a href="/guide/basic" class="section-link">시작 가이드 전체 보기 →</a>
-    </div>
-    <div class="start-grid">
-      {startSteps.map((step) => (
-        <a href={step.href} class="start-card">
-          <span>{step.no}</span>
-          <div><h3>{step.title}</h3><p>{step.text}</p></div>
-          <i>→</i>
-        </a>
-      ))}
-    </div>
-  </section>
+      <aside class="guide-stack">
+        <section class="start-checklist">
+          <header><span>FIRST LOGIN</span><h2>첫 접속 체크</h2></header>
+          <ol>
+            <li><span>1</span><div><strong>디스코드 가입·인증</strong><small>화이트리스트 등록</small></div></li>
+            <li><span>2</span><div><strong>전용 클라이언트 설치</strong><small>정상적인 플레이에 필수</small></div></li>
+            <li><span>3</span><div><strong>튜토리얼 진행</strong><small>핵심 생활 기능 체험</small></div></li>
+          </ol>
+          <a href="/guide/basic/start">가입 절차 자세히 보기 <span aria-hidden="true">→</span></a>
+        </section>
 
-  <section class="home-section life-showcase">
-    <div class="section-heading">
-      <div><span class="kicker">LIFE &amp; PRODUCTION</span><h2>생활과 생산은 취향대로</h2><p>자원을 모으는 생활과 결과물을 만드는 생산을 원하는 방식으로 키워보세요.</p></div>
-      <a href="/life" class="section-link">생활·생산 콘텐츠 전체 보기 →</a>
+        <section class="popular-panel">
+          <header><span>MOST VIEWED</span><h2>자주 찾는 정보</h2></header>
+          <a href="/guide/basic/village"><b>01</b><span>마을 점유와 권한</span><i>›</i></a>
+          <a href="/life/farmer"><b>02</b><span>농사 시설 범위</span><i>›</i></a>
+          <a href="/guide/basic/bag"><b>03</b><span>가방 확장 방법</span><i>›</i></a>
+          <a href="/life/equipment"><b>04</b><span>큐브와 파츠</span><i>›</i></a>
+        </section>
+      </aside>
     </div>
-    <div class="job-grid">
-      {jobs.map((job) => (
-        <a href={job.href} class={`job-card ${job.color}`}>
-          <img src={`/assets/lifecore/${job.image}`} alt="" loading="lazy" />
-          <div><span>{job.category} 직업</span><h3>{job.title}</h3><p>{job.text}</p><b>자세히 보기 →</b></div>
-        </a>
-      ))}
-    </div>
-  </section>
 
-  <section class="home-section">
-    <div class="section-heading">
-      <div><span class="kicker">WIKI CATEGORIES</span><h2>필요한 정보만 빠르게</h2></div>
-      <div class="section-actions">
-        <button class="section-link as-button" type="button" data-catalog-open aria-controls="wikiCatalog" aria-expanded="false">전체 목차 보기 →</button>
-        <button class="section-link as-button" type="button" data-search-open>문서 검색 →</button>
+    <section class="home-directory">
+      <header class="section-title compact">
+        <div><span>WIKI DIRECTORY</span><h2>더 둘러보기</h2></div>
+        <button class="section-link as-button" type="button" data-catalog-open>전체 위키 열기 <span aria-hidden="true">→</span></button>
+      </header>
+      <div class="directory-grid">
+        <a href="/guide/basic"><small>START</small><strong>정착과 편의</strong><span>가입부터 마을 생활까지</span></a>
+        <a href="/combat"><small>ADVENTURE</small><strong>전투와 모험</strong><span>더 타워와 잔향록</span></a>
+        <a href="/support"><small>SUPPORT</small><strong>후원과 멤버십</strong><span>등급별 혜택 비교</span></a>
+        <a href="/map"><small>WORLD</small><strong>월드 안내</strong><span>이동 조건과 이용법</span></a>
       </div>
-    </div>
-    <div class="wiki-card-grid">
-      {wikiCards.map((card) => (
-        <a href={card.href} class="wiki-card">
-          <span>{card.label}</span><h3>{card.title}</h3><p>{card.text}</p><b>문서 열기 →</b>
-        </a>
-      ))}
-    </div>
-  </section>
+    </section>
+  </div>
 
-  <section class="home-callout">
-    <div><span class="kicker">PLAY TOGETHER</span><h2>츄르월드에서 만나요.</h2><p>공식 디스코드에서 전용 클라이언트를 준비한 뒤 접속해 주세요.</p></div>
-    <div><code>churworld.kr</code><button type="button" data-copy-address>복사</button></div>
-  </section>
-
-  <script>
-    const address = 'churworld.kr';
-    const copyButtons = [document.querySelector('#copyBtn'), document.querySelector('[data-copy-address]')];
-    copyButtons.forEach((button) => button?.addEventListener('click', async () => {
-      try {
-        await navigator.clipboard.writeText(address);
-        const previous = button.textContent;
-        button.textContent = '복사 완료';
-        setTimeout(() => button.textContent = previous, 1500);
-      } catch {
-        window.prompt('서버 주소를 복사하세요.', address);
-      }
-    }));
-
-    const dot = document.querySelector('#statusDot');
-    const status = document.querySelector('#statusText');
-    fetch(`https://api.mcsrvstat.us/2/${address}`)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.online) {
-          dot?.classList.add('online');
-          if (status) status.textContent = `${data.players?.online ?? 0}명 접속 중`;
-        } else if (status) status.textContent = '현재 오프라인';
-      })
-      .catch(() => { if (status) status.textContent = 'churworld.kr'; });
-  </script>
 </BaseLayout>

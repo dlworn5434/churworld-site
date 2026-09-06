@@ -1,21 +1,54 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { findSection } from '../data/wiki';
+
 const { slug, fallbackTitle, fallbackExcerpt, pathname } = Astro.props;
+const section = findSection(pathname);
 ---
 
 <BaseLayout title={`${fallbackTitle} | 츄르월드`} description={fallbackExcerpt} pathname={pathname}>
-  <article class="doc-shell">
-    <div class="doc-hero">
-      <span class="eyebrow">LIVE CONTENT</span>
-      <h1 id="docTitle">{fallbackTitle}</h1>
-      <p class="muted" id="docExcerpt">{fallbackExcerpt}</p>
-      <div class="doc-meta" id="docMeta">불러오는 중...</div>
-    </div>
+  <div class="document-toolbar">
+    <nav class="breadcrumbs" aria-label="현재 위치">
+      <a href="/">홈</a>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
+      <a href="/life">{section?.title ?? '생활·생산'}</a>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
+      <strong>{fallbackTitle}</strong>
+    </nav>
+    <button type="button" data-copy-page>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 8.5V6a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-2.5M6 9h7a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2Z" /></svg>
+      <span>링크 복사</span>
+    </button>
+  </div>
 
-    <div id="docError" class="doc-error" style="display:none;"></div>
-    <div id="docLoading" class="doc-loading">문서를 불러오는 중이야. 잠시만 기다려줘.</div>
-    <div id="docBody" class="doc-body" style="display:none;"></div>
-  </article>
+  <div class="document-grid">
+    <article class="doc-shell">
+      <header class="doc-hero">
+        <div class="doc-hero-copy">
+          <span class="eyebrow"><i></i>LIVE CONTENT</span>
+          <h1 id="docTitle">{fallbackTitle}</h1>
+          <p class="doc-summary" id="docExcerpt">{fallbackExcerpt}</p>
+          <div class="article-meta"><span>{section?.title ?? '생활·생산 안내'}</span><span id="docMeta">불러오는 중</span></div>
+        </div>
+        <img class="doc-cover-image" src="/assets/lifecore/lifeknowledge.png" alt="" />
+      </header>
+
+      <details class="mobile-toc" id="mobileToc" hidden>
+        <summary><span><small>ON THIS PAGE</small><strong>이 문서에서</strong></span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg></summary>
+        <nav></nav>
+      </details>
+
+      <div id="docError" class="doc-error" style="display:none;"></div>
+      <div id="docLoading" class="doc-loading">문서를 불러오는 중입니다. 잠시만 기다려 주세요.</div>
+      <div id="docBody" class="doc-body" style="display:none;"></div>
+      <div class="doc-end"><span>실제 서버 설정과 다른 내용이 있다면 운영진에게 알려주세요.</span><a href="/life">생활·생산 전체 보기 <span aria-hidden="true">→</span></a></div>
+    </article>
+
+    <aside class="page-outline" aria-label="문서 보조 탐색">
+      <div class="page-toc" id="pageToc" hidden><span>ON THIS PAGE</span><strong>이 문서에서</strong><nav></nav></div>
+      <div class="related-card"><span>RELATED</span><strong>함께 보면 좋아요</strong><a href="/life/growth">성장 구조 <span aria-hidden="true">→</span></a><a href="/life/systems">주요 시스템 <span aria-hidden="true">→</span></a></div>
+    </aside>
+  </div>
 
   <script define:vars={{ slug }}>
     import { createClient } from '@supabase/supabase-js';
@@ -23,7 +56,6 @@ const { slug, fallbackTitle, fallbackExcerpt, pathname } = Astro.props;
 
     const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
     const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
-
     const titleEl = document.getElementById('docTitle');
     const excerptEl = document.getElementById('docExcerpt');
     const metaEl = document.getElementById('docMeta');
@@ -31,35 +63,77 @@ const { slug, fallbackTitle, fallbackExcerpt, pathname } = Astro.props;
     const loadingEl = document.getElementById('docLoading');
     const errorEl = document.getElementById('docError');
 
+    function enhanceDocument() {
+      if (!(bodyEl instanceof HTMLElement)) return;
+      const headings = [...bodyEl.querySelectorAll('h2, h3, h4')];
+      const desktopToc = document.getElementById('pageToc');
+      const mobileToc = document.getElementById('mobileToc');
+      const desktopNav = desktopToc?.querySelector('nav');
+      const mobileNav = mobileToc?.querySelector('nav');
+      if (headings.length > 1 && desktopToc && mobileToc && desktopNav && mobileNav) {
+        headings.forEach((heading, index) => {
+          if (!(heading instanceof HTMLElement)) return;
+          if (!heading.id) heading.id = `section-${index + 1}`;
+          [desktopNav, mobileNav].forEach((nav) => {
+            const link = document.createElement('a');
+            link.href = `#${heading.id}`;
+            link.textContent = heading.textContent ?? '';
+            if (heading.tagName === 'H3') link.className = 'depth-3';
+            if (heading.tagName === 'H4') link.className = 'depth-4';
+            nav.appendChild(link);
+          });
+        });
+        desktopToc.hidden = false;
+        mobileToc.hidden = false;
+      }
+      bodyEl.querySelectorAll('table').forEach((table) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'table-scroll';
+        wrap.tabIndex = 0;
+        wrap.setAttribute('role', 'region');
+        wrap.setAttribute('aria-label', '좌우로 이동해 표 전체 보기');
+        table.parentNode?.insertBefore(wrap, table);
+        wrap.appendChild(table);
+      });
+    }
+
     async function load() {
       if (!supabaseUrl || !supabaseKey) {
         loadingEl.style.display = 'none';
         errorEl.style.display = 'block';
-        errorEl.textContent = 'Supabase 환경변수가 비어 있어. README_SETUP.md를 보고 PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY를 먼저 넣어줘.';
+        errorEl.textContent = '문서 연결 설정을 확인하고 있습니다. 잠시 후 다시 시도해 주세요.';
         return;
       }
 
       const supabase = createClient(supabaseUrl, supabaseKey);
-      const { data, error } = await supabase
-        .from('site_pages')
-        .select('page_title, excerpt, content_md, updated_at')
-        .eq('slug', slug)
-        .single();
-
+      const { data, error } = await supabase.from('site_pages').select('page_title, excerpt, content_md, updated_at').eq('slug', slug).single();
       loadingEl.style.display = 'none';
-
       if (error || !data) {
         errorEl.style.display = 'block';
-        errorEl.textContent = '문서를 불러오지 못했어. Supabase 테이블과 slug 설정을 확인해줘.';
+        errorEl.textContent = '문서를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.';
         return;
       }
 
       titleEl.textContent = data.page_title;
       excerptEl.textContent = data.excerpt || '';
-      metaEl.textContent = `마지막 수정: ${new Date(data.updated_at).toLocaleString('ko-KR')}`;
+      metaEl.textContent = `마지막 수정 ${new Date(data.updated_at).toLocaleDateString('ko-KR')}`;
       bodyEl.innerHTML = marked.parse(data.content_md || '');
       bodyEl.style.display = 'block';
+      enhanceDocument();
     }
+
+    document.querySelector('[data-copy-page]')?.addEventListener('click', async (event) => {
+      const button = event.currentTarget;
+      if (!(button instanceof HTMLButtonElement)) return;
+      const label = button.querySelector('span');
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+        if (label) label.textContent = '복사 완료';
+        setTimeout(() => { if (label) label.textContent = '링크 복사'; }, 1800);
+      } catch {
+        window.prompt('문서 주소를 복사하세요.', window.location.href);
+      }
+    });
 
     load();
   </script>

@@ -2,15 +2,15 @@
 import { searchEntries, wikiSections } from '../data/wiki';
 
 const { title = '츄르월드', description = '츄르월드 서버 위키', pathname = '/' } = Astro.props;
-const nav = [
-  { href: '/', label: '홈', exact: true },
-  { href: '/guide/basic', label: '시작하기' },
-  { href: '/life', label: '생활 · 생산' },
-  { href: '/support', label: '후원' },
-  { href: '/map', label: '월드 안내', exact: true },
-  { href: '/commands', label: '명령어', exact: true }
-];
-const isActive = (item: (typeof nav)[number]) => item.exact ? pathname === item.href : pathname.startsWith(item.href);
+const sectionTones = ['lime', 'amber', 'violet', 'coral', 'cyan', 'cyan', 'violet', 'stone'];
+const sectionIsActive = (section: (typeof wikiSections)[number]) => {
+  if (section.entries.some((entry) => pathname === entry.href)) return true;
+  if (pathname === '/life') return ['LIFE CONTENTS', 'PRODUCTION', 'LIFE GUIDE'].includes(section.eyebrow);
+  if (pathname === '/support') return section.eyebrow === 'SUPPORT';
+  if (pathname === '/combat') return section.eyebrow === 'COMBAT & ADVENTURE';
+  if (pathname === '/guide/basic') return ['START HERE', 'SETTLEMENT'].includes(section.eyebrow);
+  return false;
+};
 ---
 <!doctype html>
 <html lang="ko">
@@ -19,203 +19,199 @@ const isActive = (item: (typeof nav)[number]) => item.exact ? pathname === item.
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#24251f" />
-    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <meta name="theme-color" content="#101411" />
+    <link rel="icon" href="/assets/lifecore/chru.png" type="image/png" />
     <link rel="stylesheet" href="/site.css" />
   </head>
-  <body>
-    <header class="site-header">
-      <div class="wrap nav">
-        <a href="/" class="brand" aria-label="츄르월드 홈">
-          <span class="brand-mark"><img src="/assets/lifecore/chru.png" alt="" /></span>
-          <span class="brand-text">
-            <small>OFFICIAL WIKI</small>
-            <strong>츄르월드</strong>
-          </span>
-        </a>
+  <body class={pathname === '/' ? 'home-page' : undefined}>
+    <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
 
-        <nav class="nav-links desktop-nav" aria-label="주요 메뉴">
-          {nav.map((item) => (
-            <a href={item.href} class={isActive(item) ? 'active' : ''}>{item.label}</a>
-          ))}
-        </nav>
+    <header class="topbar">
+      <button class="mobile-menu-button" type="button" data-menu-toggle aria-controls="siteSidebar" aria-expanded="false" aria-label="전체 위키 메뉴 열기">
+        <span></span><span></span><span></span>
+      </button>
 
-        <div class="nav-actions">
-          <button class="search-trigger" type="button" data-search-open aria-label="문서 검색 열기">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.4a7.75 7.75 0 1 1-15.5 0 7.75 7.75 0 0 1 15.5 0Z" /></svg>
-            <span>문서 검색</span>
-            <kbd>/</kbd>
-          </button>
-          <details class="mobile-menu">
-            <summary aria-label="메뉴 열기"><span></span><span></span><span></span></summary>
-            <nav aria-label="모바일 메뉴">
-              {nav.map((item) => <a href={item.href}>{item.label}</a>)}
-              <a href="/rules">서버 규칙</a>
-              <a href="/notice">위키 안내</a>
-            </nav>
-          </details>
+      <a class="brand" href="/" aria-label="츄르월드 위키 홈">
+        <span class="brand-icon"><img src="/assets/lifecore/chru.png" alt="" /></span>
+        <span class="brand-copy"><small>OFFICIAL WIKI</small><strong>츄르월드</strong></span>
+      </a>
+
+      <div class="global-search" data-search-wrap role="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.6-4.6m2.5-5.15a7.65 7.65 0 1 1-15.3 0 7.65 7.65 0 0 1 15.3 0Z" /></svg>
+        <input type="search" data-wiki-search placeholder="궁금한 내용을 검색하세요" autocomplete="off" aria-label="위키 문서 검색" aria-controls="globalSearchResults" aria-expanded="false" />
+        <kbd>/</kbd>
+        <div class="search-results" id="globalSearchResults" data-search-results hidden>
+          <div class="search-results-head"><span>문서 검색</span><small data-result-count>{searchEntries.length}개 문서</small></div>
+          <div class="search-results-list">
+            {searchEntries.map((entry) => (
+              <a href={entry.href} data-search-item={`${entry.title} ${entry.description} ${entry.keywords ?? ''} ${entry.section}`.toLowerCase()}>
+                <span><small>{entry.section}</small><strong>{entry.title}</strong></span>
+                <p>{entry.description}</p>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 16 16 8M9 8h7v7" /></svg>
+              </a>
+            ))}
+            <div class="search-empty" data-search-empty hidden>일치하는 문서가 없습니다.</div>
+          </div>
         </div>
       </div>
+
+      <nav class="top-links" aria-label="빠른 메뉴">
+        <a href="/rules">규칙</a>
+        <a href="/commands">명령어</a>
+        <a href="https://discord.gg/9n4F7rYWVE" target="_blank" rel="noreferrer">Discord <span aria-hidden="true">↗</span></a>
+      </nav>
+
+      <button class="address-button" type="button" data-copy-address aria-label="서버 주소 churworld.kr 복사">
+        <span><i data-global-status></i><small>SERVER</small></span>
+        <strong>churworld.kr</strong>
+        <b>복사</b>
+      </button>
     </header>
 
-    <aside class="catalog-rail" aria-label="전체 위키 목차">
-      <div class="catalog-rail-head">
-        <span>ALL WIKI PAGES</span>
-        <strong>전체 목차</strong>
-        <p>원하는 문서를 바로 선택하세요.</p>
-        <button type="button" data-search-open>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.4a7.75 7.75 0 1 1-15.5 0 7.75 7.75 0 0 1 15.5 0Z" /></svg>
-          목차에서 검색
+    <aside class="sidebar" id="siteSidebar" aria-label="전체 위키 목차">
+      <div class="sidebar-head">
+        <div><span>EXPLORE</span><strong>전체 위키</strong></div>
+        <button type="button" data-menu-close aria-label="전체 위키 메뉴 닫기">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>
         </button>
       </div>
-      <nav class="catalog-rail-sections">
-        {wikiSections.map((section) => (
-          <section>
-            <div class="catalog-rail-title">
-              <span>{section.eyebrow}</span>
-              <strong>{section.title}</strong>
-            </div>
-            <div class="catalog-rail-links">
+
+      <nav class="side-nav">
+        {wikiSections.map((section, index) => (
+          <details open={sectionIsActive(section) || (pathname === '/' && index < 2)} data-nav-section>
+            <summary>
+              <span class={`nav-dot ${sectionTones[index] ?? 'stone'}`}></span>
+              <span><small>{section.eyebrow}</small><strong>{section.title}</strong></span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 10 5 5 5-5" /></svg>
+            </summary>
+            <div>
               {section.entries.map((entry) => (
-                <a
-                  href={entry.href}
-                  class={pathname === entry.href ? 'active' : ''}
-                  aria-current={pathname === entry.href ? 'page' : undefined}
-                >
-                  {entry.title}
+                <a href={entry.href} class={pathname === entry.href ? 'active' : undefined} aria-current={pathname === entry.href ? 'page' : undefined}>
+                  <span>{entry.title}</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6" /></svg>
                 </a>
               ))}
             </div>
-          </section>
+          </details>
         ))}
       </nav>
+
+      <div class="sidebar-card">
+        <span>SHIFT + F</span>
+        <strong>게임 안에서는<br />통합 메뉴를 열어보세요.</strong>
+        <a href="/guide/basic/menu">메뉴 사용법 <span aria-hidden="true">→</span></a>
+      </div>
     </aside>
 
-    <main class="wrap">
-      <slot />
+    <button class="sidebar-scrim" type="button" data-menu-close aria-label="전체 위키 메뉴 닫기"></button>
+
+    <main class="workspace" id="main-content">
+      <div class="workspace-inner">
+        <slot />
+      </div>
     </main>
 
-    <button class="catalog-trigger" type="button" data-catalog-open aria-controls="wikiCatalog" aria-expanded="false">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16M4 12h16M4 19h16M8 5v14" /></svg>
-      <span>전체 목차</span>
-    </button>
-
     <footer class="footer">
-      <div class="wrap footer-inner">
+      <div class="footer-inner">
         <div class="footer-brand">
           <img src="/assets/lifecore/chru.png" alt="" />
-          <div>
-            <strong>츄르월드 위키</strong>
-            <p>서버 주소 <b>churworld.kr</b> · 전용 클라이언트 접속</p>
-          </div>
+          <div><strong>츄르월드 위키</strong><p>전용 클라이언트로 접속해 주세요 · <b>churworld.kr</b></p></div>
         </div>
-        <div class="footer-links">
-          <a href="/guide/basic">시작하기</a>
-          <a href="/life">생활 · 생산</a>
-          <a href="/support">후원</a>
-          <a href="/rules">서버 규칙</a>
-          <a href="/terms">이용 약관</a>
-          <a href="https://discord.gg/9n4F7rYWVE" target="_blank" rel="noreferrer">디스코드</a>
-        </div>
+        <nav class="footer-links" aria-label="하단 메뉴">
+          <a href="/guide/basic/start">가입 안내</a><a href="/life">생활·생산</a><a href="/support">후원</a><a href="/rules">서버 규칙</a><a href="/terms">이용 약관</a><a href="https://discord.gg/9n4F7rYWVE" target="_blank" rel="noreferrer">디스코드</a>
+        </nav>
       </div>
     </footer>
 
-    <dialog class="catalog-dialog" id="wikiCatalog" aria-labelledby="wikiCatalogTitle">
-      <div class="catalog-panel">
-        <header class="catalog-header">
-          <div>
-            <span>ALL WIKI PAGES</span>
-            <h2 id="wikiCatalogTitle">전체 목차</h2>
-            <p>카테고리를 오가지 않고 모든 문서를 바로 열 수 있어요.</p>
-          </div>
-          <button type="button" data-catalog-close aria-label="전체 목차 닫기">×</button>
-        </header>
-        <div class="catalog-sections">
-          {wikiSections.map((section) => (
-            <section class="catalog-section">
-              <div class="catalog-section-title">
-                <span>{section.eyebrow}</span>
-                <h3>{section.title}</h3>
-              </div>
-              <nav aria-label={`${section.title} 문서`}>
-                {section.entries.map((entry) => (
-                  <a href={entry.href} class={pathname === entry.href ? 'active' : ''}>
-                    <strong>{entry.title}</strong>
-                    <small>{entry.description}</small>
-                    <i aria-hidden="true">→</i>
-                  </a>
-                ))}
-              </nav>
-            </section>
-          ))}
-        </div>
-      </div>
-    </dialog>
-
-    <dialog class="search-dialog" id="wikiSearch" aria-label="위키 검색">
-      <div class="search-panel">
-        <div class="search-field">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.35-4.35m2.35-5.4a7.75 7.75 0 1 1-15.5 0 7.75 7.75 0 0 1 15.5 0Z" /></svg>
-          <input id="wikiSearchInput" type="search" placeholder="마을, 낚시, 후원, 우편함…" autocomplete="off" />
-          <button type="button" data-search-close aria-label="검색 닫기">ESC</button>
-        </div>
-        <p class="search-hint">찾는 내용을 입력하거나 아래 문서를 선택하세요.</p>
-        <div class="search-results" id="wikiSearchResults">
-          {searchEntries.map((entry) => (
-            <a href={entry.href} data-search-item={`${entry.title} ${entry.description} ${entry.keywords ?? ''} ${entry.section}`.toLowerCase()}>
-              <span><small>{entry.section}</small><strong>{entry.title}</strong></span>
-              <p>{entry.description}</p>
-            </a>
-          ))}
-          <div class="search-empty" id="wikiSearchEmpty" hidden>일치하는 문서가 없습니다.</div>
-        </div>
-      </div>
-    </dialog>
+    <nav class="mobile-dock" aria-label="모바일 빠른 메뉴">
+      <a href="/" class={pathname === '/' ? 'active' : undefined} aria-label="홈">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.5 10.5 12 3.5l8.5 7M5.5 9v11h13V9M9.5 20v-6.5h5V20" /></svg><span>홈</span>
+      </a>
+      <button type="button" data-menu-toggle aria-controls="siteSidebar" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5h6v6H4zM14 5.5h6M14 9h6M4 15h6v4H4zM14 15h6M14 19h6" /></svg><span>전체 위키</span>
+      </button>
+      <button type="button" data-search-open>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.6-4.6m2.5-5.15a7.65 7.65 0 1 1-15.3 0 7.65 7.65 0 0 1 15.3 0Z" /></svg><span>검색</span>
+      </button>
+      <a href="/rules" class={pathname === '/rules' ? 'active' : undefined}>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3.5h7L17.5 7v13.5H7ZM14 3.5V7h3.5M9.5 11.5h5M9.5 15.5h5" /></svg><span>규칙</span>
+      </a>
+    </nav>
 
     <script>
-      const dialog = document.querySelector('#wikiSearch');
-      const catalog = document.querySelector('#wikiCatalog');
-      const input = document.querySelector('#wikiSearchInput');
-      const empty = document.querySelector('#wikiSearchEmpty');
-      const items = [...document.querySelectorAll('[data-search-item]')];
+      const address = 'churworld.kr';
+      const sidebar = document.querySelector('#siteSidebar');
+      const menuButtons = [...document.querySelectorAll('[data-menu-toggle]')];
+      const searchWrap = document.querySelector('[data-search-wrap]');
+      const searchInput = document.querySelector('[data-wiki-search]');
+      const searchResults = document.querySelector('[data-search-results]');
+      const searchItems = [...document.querySelectorAll('[data-search-item]')];
+      const searchEmpty = document.querySelector('[data-search-empty]');
+      const resultCount = document.querySelector('[data-result-count]');
+
+      function openMenu() {
+        sidebar?.classList.add('open');
+        document.body.classList.add('menu-open');
+        menuButtons.forEach((button) => button.setAttribute('aria-expanded', 'true'));
+      }
+
+      function closeMenu() {
+        sidebar?.classList.remove('open');
+        document.body.classList.remove('menu-open');
+        menuButtons.forEach((button) => button.setAttribute('aria-expanded', 'false'));
+      }
+
+      function filterSearch(value = '') {
+        const query = value.trim().toLowerCase();
+        let visible = 0;
+        searchItems.forEach((item) => {
+          const match = !query || item.getAttribute('data-search-item')?.includes(query);
+          item.toggleAttribute('hidden', !match);
+          if (match) visible += 1;
+        });
+        if (searchEmpty instanceof HTMLElement) searchEmpty.hidden = visible > 0;
+        if (resultCount) resultCount.textContent = `${visible}개 문서`;
+        if (searchResults instanceof HTMLElement) searchResults.hidden = false;
+        if (searchInput instanceof HTMLInputElement) searchInput.setAttribute('aria-expanded', 'true');
+      }
 
       function openSearch() {
-        if (!(dialog instanceof HTMLDialogElement)) return;
-        if (catalog instanceof HTMLDialogElement && catalog.open) catalog.close();
-        dialog.showModal();
-        requestAnimationFrame(() => input instanceof HTMLInputElement && input.focus());
+        closeMenu();
+        if (searchInput instanceof HTMLInputElement) {
+          searchInput.focus();
+          filterSearch(searchInput.value);
+        }
       }
 
-      function closeSearch() {
-        if (dialog instanceof HTMLDialogElement) dialog.close();
+      async function copyAddress(button) {
+        try {
+          await navigator.clipboard.writeText(address);
+          const label = button.querySelector('b') ?? button;
+          const previous = label.textContent;
+          label.textContent = '완료';
+          setTimeout(() => { label.textContent = previous; }, 1800);
+        } catch {
+          window.prompt('서버 주소를 복사하세요.', address);
+        }
       }
 
-      function openCatalog() {
-        if (!(catalog instanceof HTMLDialogElement)) return;
-        if (dialog instanceof HTMLDialogElement && dialog.open) dialog.close();
-        catalog.showModal();
-        document.body.classList.add('catalog-is-open');
-        document.querySelectorAll('[data-catalog-open]').forEach((button) => button.setAttribute('aria-expanded', 'true'));
-      }
-
-      function closeCatalog() {
-        if (catalog instanceof HTMLDialogElement) catalog.close();
-      }
-
+      menuButtons.forEach((button) => button.addEventListener('click', () => sidebar?.classList.contains('open') ? closeMenu() : openMenu()));
+      document.querySelectorAll('[data-menu-close]').forEach((button) => button.addEventListener('click', closeMenu));
+      document.querySelectorAll('[data-catalog-open]').forEach((button) => button.addEventListener('click', openMenu));
       document.querySelectorAll('[data-search-open]').forEach((button) => button.addEventListener('click', openSearch));
-      document.querySelector('[data-search-close]')?.addEventListener('click', closeSearch);
-      document.querySelectorAll('[data-catalog-open]').forEach((button) => button.addEventListener('click', openCatalog));
-      document.querySelector('[data-catalog-close]')?.addEventListener('click', closeCatalog);
-      dialog?.addEventListener('click', (event) => {
-        if (event.target === dialog) closeSearch();
+      document.querySelectorAll('[data-copy-address]').forEach((button) => button.addEventListener('click', () => copyAddress(button)));
+
+      searchInput?.addEventListener('focus', () => filterSearch(searchInput instanceof HTMLInputElement ? searchInput.value : ''));
+      searchInput?.addEventListener('input', () => filterSearch(searchInput instanceof HTMLInputElement ? searchInput.value : ''));
+
+      document.addEventListener('click', (event) => {
+        if (!(event.target instanceof Node)) return;
+        if (!searchWrap?.contains(event.target) && searchResults instanceof HTMLElement) {
+          searchResults.hidden = true;
+          if (searchInput instanceof HTMLInputElement) searchInput.setAttribute('aria-expanded', 'false');
+        }
       });
-      catalog?.addEventListener('click', (event) => {
-        if (event.target === catalog) closeCatalog();
-      });
-      catalog?.addEventListener('close', () => {
-        document.body.classList.remove('catalog-is-open');
-        document.querySelectorAll('[data-catalog-open]').forEach((button) => button.setAttribute('aria-expanded', 'false'));
-      });
+
       document.addEventListener('keydown', (event) => {
         const target = event.target;
         const typing = target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement;
@@ -223,17 +219,28 @@ const isActive = (item: (typeof nav)[number]) => item.exact ? pathname === item.
           event.preventDefault();
           openSearch();
         }
+        if (event.key === 'Escape') {
+          if (searchResults instanceof HTMLElement) searchResults.hidden = true;
+          if (searchInput instanceof HTMLInputElement) searchInput.setAttribute('aria-expanded', 'false');
+          closeMenu();
+        }
       });
-      input?.addEventListener('input', () => {
-        const query = input instanceof HTMLInputElement ? input.value.trim().toLowerCase() : '';
-        let visible = 0;
-        items.forEach((item) => {
-          const match = !query || item.getAttribute('data-search-item')?.includes(query);
-          item.toggleAttribute('hidden', !match);
-          if (match) visible += 1;
+
+      document.querySelector('.side-nav a.active')?.scrollIntoView({ block: 'nearest' });
+
+      fetch(`https://api.mcsrvstat.us/3/${address}`)
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.online) {
+            document.querySelectorAll('[data-global-status], [data-status-dot]').forEach((dot) => dot.classList.add('online'));
+            document.querySelectorAll('[data-status-text]').forEach((label) => { label.textContent = `${data.players?.online ?? 0}명 접속 중`; });
+          } else {
+            document.querySelectorAll('[data-status-text]').forEach((label) => { label.textContent = '현재 오프라인'; });
+          }
+        })
+        .catch(() => {
+          document.querySelectorAll('[data-status-text]').forEach((label) => { label.textContent = address; });
         });
-        if (empty instanceof HTMLElement) empty.hidden = visible > 0;
-      });
     </script>
   </body>
 </html>
