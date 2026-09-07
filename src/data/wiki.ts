@@ -84,7 +84,7 @@ export const wikiSections: WikiSection[] = [
     entries: [
       { href: '/life/growth', title: '성장 구조', description: '공용 성장, 스탯과 직접·확장·유효 스킬 랭크', keywords: '근로 지식 감각 행운 스탯 투자 포인트 직접20 확장25 유효35 스킬확장 생산', icon: 'lifework.png' },
       { href: '/life/recipes', title: '생활 제작법', description: '재료 자동 배치, 6칸 대기열과 생활 제작법', keywords: '제작법 조합법 재료 자동배치 좌클릭 우클릭 대기열 작업대 흔한 화로 물뿌리개 스프링클러 생활 조각 강화석 큐브 드라코라이트', icon: 'lifeblacksmith.png' },
-      { href: '/life/equipment', title: '장비·강화·큐브', description: '드라코라이트 각인, 스탯 분배, 별 강화와 큐브', keywords: '드라코라이트 소유권 각인 장비스탯 스탯분배 강화석 별강화 장비강화 큐브 재설정 보존 잠재등급 가열', icon: 'lifesense.png' },
+      { href: '/life/equipment', title: '장비·강화·큐브', description: '드라코라이트 별 강화 수치와 강화 단계별 큐브 적용등급', keywords: '드라코라이트 소유권 각인 장비스탯 스탯분배 강화석 별강화 장비강화 큐브 재설정 보존 저장잠재등급 적용등급 큐브적용상한 +0 +3 +5 +8 레어 에픽 유니크 레전드리 가열', icon: 'lifesense.png' },
       { href: '/life/codex', title: '생활 도감', description: '8개 대분류 150종 등록과 영구 보상', keywords: '생활 도감 수집 등록 보상 광부 농부 어부 요리사 나무꾼 생존 기타 방어구 고대도시 시련 고고학 허기 마나 체력', icon: 'lifeknowledge.png' },
       { href: '/life/systems', title: '주요 시스템', description: '스킬 랭크, 지역 활력, 생활 조각과 장비 성장', keywords: '스킬랭크 지역활력 작업대 화로 의뢰 도감 생활조각 파편 강화석 마나 큐브 장비 생산 요일 경험치', icon: 'lifeknowledge.png' },
       { href: '/life/faq', title: '생활·생산 FAQ', description: '생활·생산 콘텐츠 자주 묻는 질문', keywords: '질문 도움 생산' },
