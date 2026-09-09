@@ -66,7 +66,7 @@ export const wikiSections: WikiSection[] = [
     entries: [
       { href: '/life/miner', title: '광부', description: '광석, 광맥, 발광 윤곽선 감지와 액티브 스킬', keywords: '채광 광산 광맥 스캔 윤곽선 광석감지 단축키 각성', icon: 'lifemine.png' },
       { href: '/life/fisher', title: '어부', description: '낚시 미니게임, 보물과 파츠 제작·관리', keywords: '낚시 물고기 파츠 바늘 줄 릴 수명 옵션 재설정 타이밍 균형 화살표 보물', icon: 'lifefish.png' },
-      { href: '/life/farmer', title: '농부', description: '커스텀 작물, 농사 장비, 스탯과 액티브 스킬', keywords: '농사 작물 씨앗 수확 숙련 경험치 화분 청크 96 제한 계절 봄 여름 가을 겨울 물뿌리개 스프링클러 스프링쿨러 비닐하우스 허수아비 단축키', icon: 'lifefarm.png' },
+      { href: '/life/farmer', title: '농부', description: '커스텀 작물, 농사 장비, 급수 물탱크와 액티브 스킬', keywords: '농사 작물 씨앗 수확 숙련 경험치 화분 청크 100 제한 계절 봄 여름 가을 겨울 물뿌리개 스프링클러 스프링쿨러 물탱크 급수 자동급수 고정성장 성장속도 신비한수액 철블록 비닐하우스 허수아비 단축키', icon: 'lifefarm.png' },
       { href: '/life/woodcutter', title: '나무꾼', description: '커스텀 고목, 지역 활력과 수액 채취', keywords: '벌목 나무 커스텀 고목 도끼 숲의분노 나무감지 수액채취 신비한수액 지역활력', icon: 'lifewoodcutter.png' }
     ]
   },
