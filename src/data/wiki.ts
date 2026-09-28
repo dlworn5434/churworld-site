@@ -31,6 +31,7 @@ export const wikiSections: WikiSection[] = [
     entries: [
       { href: '/guide/basic/village', title: '마을', description: '점유, 권한, 경작지, 바이옴, 손님과 세금', keywords: '마을 클레임 점유 청크 비용 경작지 농지 농지훼손 출입 권한 프리셋 PVP 바이옴 그룹 조공 세금 비행 초대 손님 로그 로그막대기 랭킹' },
       { href: '/guide/basic/construction', title: '마을 건축', description: '건설 도면, 건차, 가구와 24시간 효과 타워', keywords: '마을 건축 건설 도면 츄르 코인 건차 도구함 원목 묶음 장식 가구 앉기 눕기 중세 시장 주점 효과 타워 나무신 땅의신 24시간 자정 유지비 HybridBuild' },
+      { href: '/guide/basic/storage', title: '자동 창고 정리', description: '투입함과 액자로 품목별 자동 분류, 창고 생성과 관리', keywords: '창고 자동창고 자동정리 창고정리 투입함 상자 큰상자 액자 분류 필터 바닐라 보관 새로고침 일시정지 LifeStorageSorter' },
       { href: '/guide/basic/travel', title: '이동과 홈', description: '개인 홈, 랜덤 이동, 상점 택시와 엘리베이터', keywords: '홈 셋홈 공개홈 rtp back 택시 상점택시 엘리베이터 이동' },
       { href: '/guide/basic/camera', title: '카메라와 벽 사진', description: '촬영, 필터·편집, 인화와 벽 사진 설치', keywords: '카메라 사진 촬영 필름 인화 벽사진 스티커 필터 줌 churcamera ccamera' },
       { href: '/guide/basic/bag', title: '가방', description: '99칸 영구 확장, 자동 수집과 로얄 27칸', keywords: '가방 인벤토리 확장 츄르코인 455 프리미엄확장권 자동획득 로얄 27칸 99칸 126칸' },
