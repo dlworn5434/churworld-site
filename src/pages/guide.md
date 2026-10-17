@@ -18,6 +18,7 @@ pathname: /guide
 - [첫걸음 가이드](/guide/basic/start)에서 가입과 접속 순서 확인하기
 - 서버 규칙 확인하기
 - `Shift + F` 통합 메뉴 열기
+- [메뉴와 단축키](/guide/basic/menu)를 확인하고, `J`로 [HUD 화면 설정](/guide/basic/hud) 맞추기
 
 ## 3. 추천 루트
 1. 공식 디스코드에서 계정을 인증한다

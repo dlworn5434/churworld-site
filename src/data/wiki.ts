@@ -20,8 +20,8 @@ export const wikiSections: WikiSection[] = [
       { href: '/guide', title: '빠른 시작 요약', description: '가입, 전용 클라이언트와 첫 활동을 한 페이지로 확인', keywords: '빠른 시작 요약 접속 전용클라이언트 디스코드' },
       { href: '/guide/basic/start', title: '첫걸음 가이드', description: '디스코드 가입·인증, 전용 클라이언트 접속과 추천 진행 순서', keywords: '초보 시작 입문 가입 디스코드 인증 화이트리스트 전용클라이언트 길라잡이' },
       { href: '/guide/basic/tutorial', title: '신규 유저 튜토리얼', description: '생활 핵심 기능 체험과 완료 후 시작 물품', keywords: '튜토리얼 로비 신규 농사 채광 벌목 낚시 시작물품 카메라 건설도면 잠수의자' },
-      { href: '/guide/basic/menu', title: '메뉴 사용법', description: 'Shift + F 통합 메뉴와 주요 기능', keywords: '메뉴 단축키 워프 상점 거래소' },
-      { href: '/guide/basic/hud', title: 'HUD와 채팅 설정', description: 'J키로 화면 배치·정보창 크기·배경 투명도·채팅 글자 조절', keywords: 'HUD J 설정 배치 편지지 크기 투명도 표시 채팅 글자 이모티콘 쿨타임' },
+      { href: '/guide/basic/menu', title: '메뉴 사용법', description: '통합 메뉴, 지도·비행·채팅 단축키와 키보드 설정', keywords: '메뉴 단축키 키보드 키변경 N M G H 지도 비행 채팅 워프 상점 거래소' },
+      { href: '/guide/basic/hud', title: 'HUD와 채팅 설정', description: 'J키로 화면 배치·크기·채팅 글자와 단축키 안내 조절', keywords: 'HUD J 설정 배치 편지지 크기 80 투명도 표시 채팅 글자 이모티콘 쿨타임 단축키 숨기기' },
       { href: '/map', title: '월드 안내', description: '스폰, 마을, 야생, 지옥과 엔더 월드', keywords: '지도 월드 이동 워프 야생 지옥 엔더' },
       { href: '/commands', title: '명령어 모음', description: '자주 쓰는 플레이어 명령어', keywords: '명령 커맨드 도움말' }
     ]
@@ -30,18 +30,18 @@ export const wikiSections: WikiSection[] = [
     title: '정착과 편의',
     eyebrow: 'SETTLEMENT',
     entries: [
-      { href: '/guide/basic/village', title: '마을', description: '점유, 권한, 경작지, 바이옴, 손님과 세금', keywords: '마을 클레임 점유 청크 비용 경작지 농지 농지훼손 출입 권한 프리셋 PVP 바이옴 그룹 조공 세금 비행 초대 손님 로그 로그막대기 랭킹' },
+      { href: '/guide/basic/village', title: '마을', description: '점유·경작지 한도, 부마을장·금고, 공개 마을과 손님', keywords: '마을 클레임 점유 청크 한도 경작지 농지 출입 권한 프리셋 PVP 바이옴 그룹 조공 세금 부마을장 금고 출금 공개 방문 소개 비행 초대 손님 로그 로그막대기 랭킹' },
       { href: '/guide/basic/construction', title: '마을 건축', description: '건설 도면, 건차, 가구와 24시간 효과 타워', keywords: '마을 건축 건설 도면 츄르 코인 건차 도구함 원목 묶음 장식 가구 앉기 눕기 중세 시장 주점 효과 타워 나무신 땅의신 24시간 자정 유지비 HybridBuild' },
       { href: '/guide/basic/storage', title: '자동 창고 정리', description: '투입함과 액자로 품목별 자동 분류, 창고 생성과 관리', keywords: '창고 자동창고 자동정리 창고정리 투입함 상자 큰상자 액자 분류 필터 바닐라 보관 새로고침 일시정지 LifeStorageSorter' },
-      { href: '/guide/basic/travel', title: '이동과 홈', description: '개인 홈, 랜덤 이동, 상점 택시와 엘리베이터', keywords: '홈 셋홈 공개홈 rtp back 택시 상점택시 엘리베이터 이동' },
+      { href: '/guide/basic/travel', title: '이동과 홈', description: '개인 홈, 랜덤 이동, 택시 목적지 선택과 엘리베이터', keywords: '홈 셋홈 공개홈 rtp back 택시 상점 강화소 목적지 엘리베이터 이동' },
       { href: '/guide/basic/camera', title: '카메라와 벽 사진', description: '촬영, 필터·편집, 인화와 벽 사진 설치', keywords: '카메라 사진 촬영 필름 인화 벽사진 스티커 필터 줌 churcamera ccamera' },
-      { href: '/guide/basic/bag', title: '가방', description: '99칸 영구 확장, 자동 수집과 로얄 27칸', keywords: '가방 인벤토리 확장 츄르코인 455 프리미엄확장권 자동획득 로얄 27칸 99칸 126칸' },
-      { href: '/guide/basic/mailbox', title: '우편함', description: '아이템 발송, 수령과 보관 한도', keywords: '우편 메일 발송 수령 보관함' },
-      { href: '/guide/basic/shop', title: '상점과 거래', description: '생활상점, 후원상품, 시세와 추천 보상', keywords: '상점 거래소 후원상점 츄르 물물교환 재분배 주문서 마을비행 이용권 요리시세' },
+      { href: '/guide/basic/bag', title: '가방', description: '영구 확장, 모두 넣기·자동 획득과 로얄 보너스 공간', keywords: '가방 인벤토리 모두넣기 확장 츄르코인 455 프리미엄확장권 자동획득 로얄 27칸 99칸 126칸' },
+      { href: '/guide/basic/mailbox', title: '우편함', description: '아이템 발송·수령, 보관 기간과 시스템 회수품', keywords: '우편 메일 발송 수령 보관함 회수품 만료 입장권 빨간우편함' },
+      { href: '/guide/basic/shop', title: '상점과 거래', description: '생활상점, 후원상품, 추천상자 열기와 보상 수령', keywords: '상점 거래소 후원상점 츄르 물물교환 재분배 주문서 마을비행 이용권 요리시세 추천상자 가챠수령 보상' },
       { href: '/guide/basic/marketplace', title: '유저 거래소', description: '판매 등록과 구매 주문, 보관함·정산 이용법', keywords: '거래소 등록 판매 구매주문 삽니다 팝니다 검색 수수료 보관함 정산 에스크로' },
-      { href: '/guide/basic/economy', title: '재화·교환·ATM', description: '돈 보내기, 재화 조회, 물물교환과 츄르 환전', keywords: '돈보내기 송금 pay 재화 물물교환 작물교환 ATM 츄르 환전' },
+      { href: '/guide/basic/economy', title: '재화·교환·ATM', description: '물물교환 상인의 네 메뉴, 돈주머니와 츄르 환전', keywords: '돈보내기 돈주머니 송금 pay 재화 물물교환 무지개물고기 금별 생활조각 강화조각 고급화분 작물교환 ATM 츄르 환전' },
       { href: '/guide/basic/requests', title: '의뢰', description: '일일·주간·월간 목표와 새로고침', keywords: '의뢰 퀘스트 일일 주간 월간 새로고침 보상' },
-      { href: '/guide/basic/codi', title: '코디와 뽑기', description: '일반 코디와 도구·방어구 스킨 적용·뽑기', keywords: '코디 치장 뽑기 도구스킨 방어구스킨 외형 복구 추출기 마일리지 모자 날개' },
+      { href: '/guide/basic/codi', title: '코디와 뽑기', description: '코디 선택권, 보유 필터와 장비 스킨의 내구도 보호', keywords: '코디 치장 뽑기 선택권 보유중 필터 도구스킨 방어구스킨 내구도 등급 외형 복구 추출기 마일리지 모자 날개' },
       { href: '/guide/basic/drawing', title: '그림 그리기', description: '자체 그림 편집기, 작품 관리·지도 출력·주변 관람', keywords: '그림 ChurPaint 자체 캔버스 저장 지도 작품 붓 색상 액자 관람' },
       { href: '/guide/basic/diving-chair', title: '잠수 서버와 별 포인트', description: '전용 잠수 서버, 별 판매와 프리미엄 의자 등록', keywords: '잠수 이동 종료 AFK 별 창고 판매 포인트 프리미엄 의자 등록 꿈의조각 음성채널 디스코드' }
     ]
