@@ -35,14 +35,14 @@ export const wikiSections: WikiSection[] = [
       { href: '/guide/basic/storage', title: '자동 창고 정리', description: '투입함과 액자로 품목별 자동 분류, 창고 생성과 관리', keywords: '창고 자동창고 자동정리 창고정리 투입함 상자 큰상자 액자 분류 필터 바닐라 보관 새로고침 일시정지 LifeStorageSorter' },
       { href: '/guide/basic/travel', title: '이동과 홈', description: '개인 홈, 랜덤 이동, 택시 목적지 선택과 엘리베이터', keywords: '홈 셋홈 공개홈 rtp back 택시 상점 강화소 목적지 엘리베이터 이동' },
       { href: '/guide/basic/camera', title: '카메라와 벽 사진', description: '촬영, 필터·편집, 인화와 벽 사진 설치', keywords: '카메라 사진 촬영 필름 인화 벽사진 스티커 필터 줌 churcamera ccamera' },
-      { href: '/guide/basic/bag', title: '가방', description: '영구 확장, 모두 넣기·자동 획득과 로얄 보너스 공간', keywords: '가방 인벤토리 모두넣기 확장 츄르코인 455 프리미엄확장권 자동획득 로얄 27칸 99칸 126칸' },
+      { href: '/guide/basic/bag', title: '가방', description: '코인·프리미엄 독립 확장, 모두 넣기와 로얄 보너스 공간', keywords: '가방 인벤토리 모두넣기 확장 츄르코인 455 코인10회 프리미엄확장권 20회 독립 자동획득 로얄 27칸 279칸 306칸 31줄 34줄' },
       { href: '/guide/basic/mailbox', title: '우편함', description: '아이템 발송·수령, 보관 기간과 시스템 회수품', keywords: '우편 메일 발송 수령 보관함 회수품 만료 입장권 빨간우편함' },
-      { href: '/guide/basic/shop', title: '상점과 거래', description: '생활상점, 후원상품, 추천상자 열기와 보상 수령', keywords: '상점 거래소 후원상점 츄르 물물교환 재분배 주문서 마을비행 이용권 요리시세 추천상자 가챠수령 보상' },
+      { href: '/guide/basic/shop', title: '상점과 거래', description: '생활·나무 상점, 후원상품과 추천상자 보상 수령', keywords: '상점 나무상점 황금원목 황금나무 판매 거래소 후원상점 츄르 물물교환 재분배 주문서 마을비행 이용권 요리시세 추천상자 가챠수령 보상' },
       { href: '/guide/basic/marketplace', title: '유저 거래소', description: '판매 등록과 구매 주문, 보관함·정산 이용법', keywords: '거래소 등록 판매 구매주문 삽니다 팝니다 검색 수수료 보관함 정산 에스크로' },
       { href: '/guide/basic/economy', title: '재화·교환·ATM', description: '물물교환 상인의 네 메뉴, 돈주머니와 츄르 환전', keywords: '돈보내기 돈주머니 송금 pay 재화 물물교환 무지개물고기 금별 생활조각 강화조각 고급화분 작물교환 ATM 츄르 환전' },
       { href: '/guide/basic/requests', title: '의뢰', description: '일일·주간·월간 목표와 새로고침', keywords: '의뢰 퀘스트 일일 주간 월간 새로고침 보상' },
       { href: '/guide/basic/codi', title: '코디와 뽑기', description: '코디 선택권, 보유 필터와 장비 스킨의 내구도 보호', keywords: '코디 치장 뽑기 선택권 보유중 필터 도구스킨 방어구스킨 내구도 등급 외형 복구 추출기 마일리지 모자 날개' },
-      { href: '/guide/basic/drawing', title: '그림 그리기', description: '자체 그림 편집기, 작품 관리·지도 출력·주변 관람', keywords: '그림 ChurPaint 자체 캔버스 저장 지도 작품 붓 색상 액자 관람' },
+      { href: '/guide/basic/drawing', title: '그림 그리기', description: '그림 도구·색상환·음영, 작품 관리와 지도 출력', keywords: '그림 ChurPaint 자체 캔버스 저장 지도 작품 붓 에어브러시 그림자 빛 색상환 HEX RGB HSV 색혼합 액자 관람' },
       { href: '/guide/basic/diving-chair', title: '잠수 서버와 별 포인트', description: '전용 잠수 서버, 별 판매와 프리미엄 의자 등록', keywords: '잠수 이동 종료 AFK 별 창고 판매 포인트 프리미엄 의자 등록 꿈의조각 음성채널 디스코드' }
     ]
   },
@@ -69,14 +69,14 @@ export const wikiSections: WikiSection[] = [
       { href: '/life/miner', title: '광부', description: '광석, 광맥, 발광 윤곽선 감지와 액티브 스킬', keywords: '채광 광산 광맥 스캔 윤곽선 광석감지 단축키 각성', icon: 'lifemine.png' },
       { href: '/life/fisher', title: '어부', description: '낚시 미니게임, 보물과 파츠 제작·관리', keywords: '낚시 물고기 파츠 바늘 줄 릴 수명 옵션 재설정 타이밍 균형 화살표 보물', icon: 'lifefish.png' },
       { href: '/life/farmer', title: '농부', description: '커스텀 작물, 농사 장비, 급수 물탱크와 액티브 스킬', keywords: '농사 작물 씨앗 수확 숙련 경험치 화분 청크 100 제한 계절 봄 여름 가을 겨울 물뿌리개 스프링클러 스프링쿨러 물탱크 급수 자동급수 고정성장 성장속도 신비한수액 철블록 비닐하우스 허수아비 단축키', icon: 'lifefarm.png' },
-      { href: '/life/woodcutter', title: '나무꾼', description: '커스텀 고목, 지역 활력과 수액 채취', keywords: '벌목 나무 커스텀 고목 도끼 숲의분노 나무감지 수액채취 신비한수액 지역활력', icon: 'lifewoodcutter.png' }
+      { href: '/life/woodcutter', title: '나무꾼', description: '마을 재배 나무, 일곱 스킬·스탯과 야생 벌목', keywords: '벌목 나무 커스텀 고목 도끼 강인한도끼 목재잔재 숲의분노 되살아나는숲 금빛수관 연속참격 숲의파동 스탯 재식재 묘목 2x2 황금원목 신비한수액 지역활력', icon: 'lifewoodcutter.png' }
     ]
   },
   {
     title: '생산 콘텐츠',
     eyebrow: 'PRODUCTION',
     entries: [
-      { href: '/life/chef', title: '요리사', description: '레시피, 조리대·요리 등급과 음식의 마나 회복', keywords: '생산 요리 레시피 조리 품질 음식 마나 회복 배부름 뒤집개', icon: 'lifecook.png' },
+      { href: '/life/chef', title: '요리사', description: '손질도마·후라이팬·냉장고 설치와 조리·완성품 수령', keywords: '생산 요리 주방 손질도마 손질칼 후라이팬 냉장고 재료 공급 자동배출 조리 품질 음식 마나 회복 배부름 뒤집개 보조손', icon: 'lifecook.png' },
       { href: '/life/blacksmith', title: '대장술', description: '제련, 제작, 재료 절약과 추가 결과물', keywords: '생산 대장장이 대장술 제련 제작 화로 모루', icon: 'lifeblacksmith.png' }
     ]
   },
