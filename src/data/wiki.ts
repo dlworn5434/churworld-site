@@ -99,7 +99,7 @@ export const wikiSections: WikiSection[] = [
     eyebrow: 'SERVER INFO',
     entries: [
       { href: '/notice', title: '위키 이용 안내', description: '전체 목차와 현재 제공하는 문서 안내', keywords: '위키 목차 안내 찾기' },
-      { href: '/rules', title: '서버 규칙', description: '마인크래프트와 디스코드에서 함께 지켜야 할 이용 기준', keywords: '규칙 경고 정지 차단 제재 신고 무고 디스코드 개인 DM 괴롭힘 PVP 테러 사기 거래 도박 시세조작 버그 모드 매크로 핵 엑스레이 감마 데이터추출 이모트 계정공유 공장 자동화 레드스톤 피스톤 수레 호퍼 채굴 평지화 동물 스포너 스킨 닉네임' },
+      { href: '/rules', title: '서버 규칙', description: '마인크래프트와 디스코드에서 함께 지켜야 할 이용 기준', keywords: '규칙 경고 정지 차단 제재 신고 무고 디스코드 개인 DM 괴롭힘 PVP 테러 사기 거래 도박 시세조작 버그 모드 매크로 핵 엑스레이 감마 데이터추출 이모트 마을이전 마을탈퇴 알림 아이템정산 배상 계정공유 공장 자동화 레드스톤 피스톤 수레 호퍼 채굴 평지화 동물 스포너 스킨 닉네임' },
       { href: '/terms', title: '이용 약관', description: '서비스 이용 및 운영 정책', keywords: '약관 정책' }
     ]
   }
