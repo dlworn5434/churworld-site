@@ -5,7 +5,8 @@ const lifeJobs = [
   { href: '/life/miner', title: '광부', image: 'lifemine.png', summary: '광석과 광맥을 찾아 채굴하며 보석과 핵심 재료를 모으는 생활', stats: '근로 · 지식 · 감각 · 행운', tone: 'stone' },
   { href: '/life/fisher', title: '어부', image: 'lifefish.png', summary: '미니게임을 즐기고 파츠를 조합해 더 좋은 물고기를 노리는 생활', stats: '근로 · 지식 · 감각 · 행운', tone: 'water' },
   { href: '/life/farmer', title: '농부', image: 'lifefarm.png', summary: '커스텀 작물을 키우고 높은 등급과 추가 수확을 노리는 생활', stats: '근로 · 지식 · 감각 · 행운', tone: 'field' },
-  { href: '/life/woodcutter', title: '나무꾼', image: 'lifewoodcutter.png', summary: '야생 고목과 마을 재배 나무를 키우고 스킬로 벌목하는 생활', stats: '근로 · 지식 · 감각 · 행운', tone: 'wood' }
+  { href: '/life/woodcutter', title: '나무꾼', image: 'lifewoodcutter.png', summary: '야생 고목과 마을 재배 나무를 키우고 스킬로 함께 벌목하는 생활', stats: '근로 · 지식 · 감각 · 행운', tone: 'wood' },
+  { href: '/life/breeder', title: '사육사', image: 'lifebreederjob.png', summary: '동물을 돌보고 목장을 키우며 생산품을 수확하는 생활', stats: '근로 · 지식 · 감각 · 행운', tone: 'field' }
 ];
 
 const productionJobs = [
@@ -23,7 +24,7 @@ const stats = [
 
 <BaseLayout title="생활·생산 콘텐츠 | 츄르월드" description="츄르월드 생활·생산 직업과 성장 구조 안내" pathname="/life">
   <section class="index-hero life-index-hero">
-    <div><span class="kicker">LIFE &amp; PRODUCTION</span><h1>자원을 모으는 네 생활,<br />결과물을 만드는 두 생산</h1><p>생활과 생산은 공용 성장과 직업별 숙련도, 직접 투자·장비·도감·큐브 스킬 랭크가 함께 연결됩니다.</p><div class="hero-actions"><a class="btn primary" href="/life/growth">성장 구조 먼저 보기</a><a class="btn text" href="/life/faq">생활·생산 FAQ →</a></div></div>
+    <div><span class="kicker">LIFE &amp; PRODUCTION</span><h1>자원을 모으는 다섯 생활,<br />결과물을 만드는 두 생산</h1><p>생활과 생산은 공용 성장과 직업별 숙련도, 직접 투자·장비·도감·큐브 스킬 랭크가 함께 연결됩니다.</p><div class="hero-actions"><a class="btn primary" href="/life/growth">성장 구조 먼저 보기</a><a class="btn text" href="/life/faq">생활·생산 FAQ →</a></div></div>
     <div class="stat-art-stack">
       {stats.map((stat) => <div><img src={`/assets/lifecore/${stat.image}`} alt="" /><span><b>{stat.name}</b>{stat.text}</span></div>)}
     </div>
@@ -46,7 +47,7 @@ const stats = [
     <div class="life-job-list">
       {productionJobs.map((job, index) => (
         <a class={`life-job-row ${job.tone}`} href={job.href}>
-          <span class="life-job-index">0{index + 5}</span><img src={`/assets/lifecore/${job.image}`} alt="" loading="lazy" />
+          <span class="life-job-index">0{index + lifeJobs.length + 1}</span><img src={`/assets/lifecore/${job.image}`} alt="" loading="lazy" />
           <div><small>PRODUCTION JOB</small><h3>{job.title}</h3><p>{job.summary}</p><span>{job.stats}</span></div><b>문서 보기 →</b>
         </a>
       ))}
@@ -59,7 +60,7 @@ const stats = [
     <a href="/life/equipment"><span>장비</span><h3>드라코라이트·강화·큐브</h3><p>소유권 각인, 기본 스탯, +10 별 강화와 강화 단계별 큐브 적용등급을 확인하세요.</p><b>장비 성장 보기 →</b></a>
     <a href="/life/codex"><span>수집</span><h3>생활 도감</h3><p>생활·생존·기타·방어구 8개 분류의 등록 조건과 영구 보상을 확인하세요.</p><b>도감 보기 →</b></a>
     <a href="/guide/basic/construction"><span>정착</span><h3>마을 건축</h3><p>건설 도면과 도구함으로 장식 가구와 효과 타워를 설치하는 방법을 확인하세요.</p><b>마을 건축 보기 →</b></a>
-    <a href="/life/systems"><span>안내</span><h3>주요 시스템 한눈에 보기</h3><p>스킬 랭크, 지역 활력, 생활 조각, 장비 성장과 의뢰의 연결 구조를 확인하세요.</p><b>시스템 보기 →</b></a>
+    <a href="/life/systems"><span>안내</span><h3>주요 시스템 한눈에 보기</h3><p>스킬 랭크, 지역 활력, 강화석 획득, 장비 성장과 의뢰의 연결 구조를 확인하세요.</p><b>시스템 보기 →</b></a>
     <a href="/life/faq"><span>도움말</span><h3>생활·생산 FAQ</h3><p>숙련도와 파츠, 작물, 나무꾼과 대장술에 관한 자주 묻는 질문입니다.</p><b>FAQ 보기 →</b></a>
   </section>
 </BaseLayout>

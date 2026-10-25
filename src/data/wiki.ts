@@ -69,14 +69,15 @@ export const wikiSections: WikiSection[] = [
       { href: '/life/miner', title: '광부', description: '광석, 광맥, 발광 윤곽선 감지와 액티브 스킬', keywords: '채광 광산 광맥 스캔 윤곽선 광석감지 단축키 각성', icon: 'lifemine.png' },
       { href: '/life/fisher', title: '어부', description: '낚시 미니게임, 보물과 파츠 제작·관리', keywords: '낚시 물고기 파츠 바늘 줄 릴 수명 옵션 재설정 타이밍 균형 화살표 보물', icon: 'lifefish.png' },
       { href: '/life/farmer', title: '농부', description: '커스텀 작물, 농사 장비, 급수 물탱크와 액티브 스킬', keywords: '농사 작물 씨앗 수확 숙련 경험치 화분 청크 100 제한 계절 봄 여름 가을 겨울 물뿌리개 스프링클러 스프링쿨러 물탱크 급수 자동급수 고정성장 성장속도 신비한수액 철블록 비닐하우스 허수아비 단축키', icon: 'lifefarm.png' },
-      { href: '/life/woodcutter', title: '나무꾼', description: '마을 재배 나무, 일곱 스킬·스탯과 야생 벌목', keywords: '벌목 나무 커스텀 고목 도끼 강인한도끼 목재잔재 숲의분노 되살아나는숲 금빛수관 연속참격 숲의파동 스탯 재식재 묘목 2x2 황금원목 신비한수액 지역활력', icon: 'lifewoodcutter.png' }
+      { href: '/life/woodcutter', title: '나무꾼', description: '마을 공동 벌목, 묘목 반환·재식재와 일곱 스킬', keywords: '벌목 나무 커스텀 고목 도끼 강인한도끼 목재잔재 숲의분노 되살아나는숲 금빛수관 연속참격 숲의파동 스탯 재식재 묘목 반환 공동벌목 2x2 황금원목 신비한수액 지역활력', icon: 'lifewoodcutter.png' },
+      { href: '/life/breeder', title: '사육사', description: '동물 소환, 목장 증축, 일곱 패시브와 생산품 수확', keywords: '사육 목장 소 돼지 양 닭 토끼 소환 회수 생산 수확 검 패시브 스탯 품질교환 강화석 축산물 은빛검무 목장의파동 별빛소나기 무리의호흡', icon: 'lifebreederjob.png' }
     ]
   },
   {
     title: '생산 콘텐츠',
     eyebrow: 'PRODUCTION',
     entries: [
-      { href: '/life/chef', title: '요리사', description: '손질도마·후라이팬·냉장고 설치와 조리·완성품 수령', keywords: '생산 요리 주방 손질도마 손질칼 후라이팬 냉장고 재료 공급 자동배출 조리 품질 음식 마나 회복 배부름 뒤집개 보조손', icon: 'lifecook.png' },
+      { href: '/life/chef', title: '요리사', description: '주방 조작, 냉장고·팬 연결과 열기·손질 보너스', keywords: '생산 요리 주방 손질도마 손질칼 후라이팬 냉장고 재료 공급 자동배출 조리 품질 음식 마나 회복 배부름 뒤집개 보조손 내구성 동시조리 달아오른주방 칼과불의호흡 손질보너스', icon: 'lifecook.png' },
       { href: '/life/blacksmith', title: '대장술', description: '제련, 제작, 재료 절약과 추가 결과물', keywords: '생산 대장장이 대장술 제련 제작 화로 모루', icon: 'lifeblacksmith.png' }
     ]
   },
@@ -88,7 +89,7 @@ export const wikiSections: WikiSection[] = [
       { href: '/life/recipes', title: '생활 제작법', description: '재료 자동 배치, 6칸 대기열과 생활 제작법', keywords: '제작법 조합법 재료 자동배치 좌클릭 우클릭 대기열 작업대 흔한 화로 물뿌리개 스프링클러 생활 조각 강화석 큐브 드라코라이트', icon: 'lifeblacksmith.png' },
       { href: '/life/equipment', title: '장비·강화·큐브', description: '드라코라이트 별 강화 수치와 강화 단계별 큐브 적용등급', keywords: '드라코라이트 소유권 각인 장비스탯 스탯분배 강화석 별강화 장비강화 큐브 재설정 보존 저장잠재등급 적용등급 큐브적용상한 +0 +3 +5 +8 레어 에픽 유니크 레전드리 가열', icon: 'lifesense.png' },
       { href: '/life/codex', title: '생활 도감', description: '8개 대분류 150종 등록과 영구 보상', keywords: '생활 도감 수집 등록 보상 광부 농부 어부 요리사 나무꾼 생존 기타 방어구 고대도시 시련 고고학 허기 마나 체력', icon: 'lifeknowledge.png' },
-      { href: '/life/systems', title: '주요 시스템', description: '스킬 랭크, 지역 활력, 생활 조각과 장비 성장', keywords: '스킬랭크 지역활력 작업대 화로 의뢰 도감 생활조각 파편 강화석 마나 큐브 장비 생산 요일 경험치', icon: 'lifeknowledge.png' },
+      { href: '/life/systems', title: '주요 시스템', description: '스킬 랭크, 지역 활력, 강화석 획득과 장비 성장', keywords: '스킬랭크 지역활력 작업대 화로 의뢰 도감 생활조각 파편 강화석 마나 큐브 장비 생산 사육 황금축산물 요일 경험치', icon: 'lifeknowledge.png' },
       { href: '/life/faq', title: '생활·생산 FAQ', description: '생활·생산 콘텐츠 자주 묻는 질문', keywords: '질문 도움 생산' },
       { href: '/guide/life', title: '생활·생산 통합 가이드', description: '운영진이 실시간으로 갱신하는 생활·생산 안내', keywords: '생활 생산 통합 안내 실시간 가이드' }
     ]
@@ -98,7 +99,7 @@ export const wikiSections: WikiSection[] = [
     eyebrow: 'SERVER INFO',
     entries: [
       { href: '/notice', title: '위키 이용 안내', description: '전체 목차와 현재 제공하는 문서 안내', keywords: '위키 목차 안내 찾기' },
-      { href: '/rules', title: '서버 규칙', description: '마인크래프트와 디스코드에서 함께 지켜야 할 이용 기준', keywords: '규칙 경고 정지 차단 제재 신고 무고 디스코드 개인 DM 괴롭힘 PVP 테러 사기 거래 도박 시세조작 버그 모드 매크로 계정공유 공장 자동화 레드스톤 피스톤 수레 호퍼 채굴 평지화 동물 스포너 스킨 닉네임' },
+      { href: '/rules', title: '서버 규칙', description: '마인크래프트와 디스코드에서 함께 지켜야 할 이용 기준', keywords: '규칙 경고 정지 차단 제재 신고 무고 디스코드 개인 DM 괴롭힘 PVP 테러 사기 거래 도박 시세조작 버그 모드 매크로 핵 엑스레이 감마 데이터추출 이모트 계정공유 공장 자동화 레드스톤 피스톤 수레 호퍼 채굴 평지화 동물 스포너 스킨 닉네임' },
       { href: '/terms', title: '이용 약관', description: '서비스 이용 및 운영 정책', keywords: '약관 정책' }
     ]
   }
