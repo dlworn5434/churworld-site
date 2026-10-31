@@ -19,7 +19,7 @@ export const wikiSections: WikiSection[] = [
     entries: [
       { href: '/guide', title: '빠른 시작 요약', description: '가입, 전용 클라이언트와 첫 활동을 한 페이지로 확인', keywords: '빠른 시작 요약 접속 전용클라이언트 디스코드' },
       { href: '/guide/basic/start', title: '첫걸음 가이드', description: '디스코드 가입·인증, 전용 클라이언트 접속과 추천 진행 순서', keywords: '초보 시작 입문 가입 디스코드 인증 화이트리스트 전용클라이언트 길라잡이' },
-      { href: '/guide/basic/tutorial', title: '신규 유저 튜토리얼', description: '생활 핵심 기능 체험과 완료 후 시작 물품', keywords: '튜토리얼 로비 신규 농사 채광 벌목 낚시 시작물품 카메라 건설도면 잠수의자' },
+      { href: '/guide/basic/tutorial', title: '신규 유저 안내 맵', description: '안내 맵을 확인하고 NPC를 눌러 츄르월드로 출발하는 방법', keywords: '안내 맵 로비 신규 시작 NPC 출발 츄르월드' },
       { href: '/guide/basic/menu', title: '메뉴 사용법', description: '통합 메뉴, 지도·비행·채팅 단축키와 키보드 설정', keywords: '메뉴 단축키 키보드 키변경 N M G H 지도 비행 채팅 워프 상점 거래소' },
       { href: '/guide/basic/hud', title: 'HUD와 채팅 설정', description: 'J키로 화면 배치·크기·채팅 글자와 단축키 안내 조절', keywords: 'HUD J 설정 배치 편지지 크기 80 투명도 표시 채팅 글자 이모티콘 쿨타임 단축키 숨기기' },
       { href: '/map', title: '월드 안내', description: '스폰, 마을, 야생, 지옥과 엔더 월드', keywords: '지도 월드 이동 워프 야생 지옥 엔더' },
