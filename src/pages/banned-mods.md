@@ -44,7 +44,6 @@ pathname: /banned-mods
 | --- | --- |
 | **Litematica** | **Easy Place(쉬운 설치) 기능 금지**. 설계도 표시와 재료 목록은 이용할 수 있습니다. |
 | **Litematica Printer 등** | **프린터 기능 금지** |
-| **Inventory Profiles Next** | **자동 보충 기능만 금지** |
 | **Tweakeroo** | **반복 입력·건축 자동화 관련 기능 금지** |
 | **ClientHarvest** | **자동 농사 관련 기능 금지** |
 | **Item Scroller** | **반복 대량 제작 기능 금지**. 일반 스크롤·아이템 이동은 이 제한에 포함되지 않습니다. |
