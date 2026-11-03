@@ -1,5 +1,42 @@
 ---
-import DocPage from '../../components/DocPage.astro';
+import DocLayout from '../../layouts/DocLayout.astro';
+
+const jobs = [
+  { name: '광부', href: '/life/miner', text: '야생에서 광석과 광맥을 채굴하고, 각성·황금광로·채굴 콤보를 활용합니다.' },
+  { name: '어부', href: '/life/fisher', text: '낚시 미니게임과 낚싯대 파츠로 물고기를 낚고 생활 교환소를 이용합니다.' },
+  { name: '농부', href: '/life/farmer', text: '마을 경작지에 작물을 심고 물뿌리개·물탱크 등 농사 장비로 관리합니다.' },
+  { name: '나무꾼', href: '/life/woodcutter', text: '야생 고목과 마을 재배 나무를 벌목하며 장소에 맞는 스킬을 사용합니다.' },
+  { name: '사육사', href: '/life/breeder', text: '마을에서 동물을 돌보고 생산품을 수확하며 목장을 증축합니다.' },
+  { name: '요리사', href: '/life/chef', text: '도마·후라이팬·냉장고를 설치해 재료를 준비하고 조리합니다.' },
+  { name: '대장술', href: '/life/blacksmith', text: '대장간 화로에서 재료를 제련하고 제작 효율을 높입니다.' }
+];
 ---
 
-<DocPage slug="guide-life" fallbackTitle="생활·생산 콘텐츠 가이드" fallbackExcerpt="숙련도, 강화, 제작, 경제, 도감 안내" pathname="/guide/life" />
+<DocLayout title="생활·생산 콘텐츠 가이드" badge="생활 시작" description="직업별 시작 방법과 스탯·도감·장비 성장으로 이어지는 안내" pathname="/guide/life">
+  <h2 id="처음-시작하는-순서">처음 시작하는 순서</h2>
+  <ol>
+    <li><code>/life</code>에서 생활·생산 메뉴를 열고, 관심 있는 직업의 레벨과 스킬을 확인합니다.</li>
+    <li><code>/길라잡이</code>에서 기본 목표를 따라가며 도구와 작업대를 준비합니다.</li>
+    <li>공용 스탯과 직업별 스킬 포인트를 자주 하는 활동에 맞춰 투자합니다.</li>
+    <li>재료를 모아 도감에 등록하고, 드라코라이트 장비의 스탯·강화·큐브로 성장합니다.</li>
+  </ol>
+  <p>공용 레벨과 직업별 숙련도는 별도로 성장합니다. 포인트 투자와 단축키는 <a href="/life/growth">성장 구조</a>에서 확인하세요.</p>
+
+  <h2 id="직업별-플레이-안내">직업별 플레이 안내</h2>
+  <table>
+    <thead><tr><th>직업</th><th>시작할 활동</th></tr></thead>
+    <tbody>{jobs.map((job) => <tr><td><a href={job.href}>{job.name}</a></td><td>{job.text}</td></tr>)}</tbody>
+  </table>
+
+  <h2 id="재료를-모은-다음">재료를 모은 다음</h2>
+  <ul>
+    <li><a href="/life/codex">도감</a>: 수집품을 등록해 영구 보상을 받습니다. 분류별 인벤 일괄 등록도 이용할 수 있습니다.</li>
+    <li><a href="/life/recipes">생활 제작법</a>: 작업대·농사 장비·성장 재료를 준비합니다. 음식 재료와 배치는 게임 안 레시피 화면에서 확인하세요.</li>
+    <li><a href="/life/equipment">장비 성장</a>: 소유권 각인, 기본 스탯, 별 강화와 큐브 사용법을 확인합니다.</li>
+    <li><a href="/guide/basic/shop">생활 상점</a>과 <a href="/guide/basic/economy">교환소</a>: NPC에게 생산품을 팔거나 필요한 재료로 교환합니다.</li>
+  </ul>
+
+  <h2 id="마을에서-생활하기">마을에서 생활하기</h2>
+  <p>농사와 사육, 재배 나무, 주방과 건축을 시작하기 전에는 <a href="/guide/basic/village">마을 권한과 공동 경작지 한도</a>를 확인하세요. 모은 재료는 <a href="/guide/basic/storage">자동 창고 정리</a>로 분류할 수 있습니다.</p>
+  <p>요일 보너스·마나·지역 활력은 <a href="/life/systems">주요 시스템</a>에, 플레이 중 자주 막히는 부분은 <a href="/life/faq">생활·생산 FAQ</a>에 정리되어 있습니다.</p>
+</DocLayout>

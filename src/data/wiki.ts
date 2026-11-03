@@ -21,7 +21,7 @@ export const wikiSections: WikiSection[] = [
       { href: '/guide/basic/start', title: '첫걸음 가이드', description: '디스코드 가입·인증, 전용 클라이언트 접속과 추천 진행 순서', keywords: '초보 시작 입문 가입 디스코드 인증 화이트리스트 전용클라이언트 길라잡이' },
       { href: '/guide/basic/tutorial', title: '신규 유저 안내 맵', description: '안내 맵을 확인하고 NPC를 눌러 츄르월드로 출발하는 방법', keywords: '안내 맵 로비 신규 시작 NPC 출발 츄르월드' },
       { href: '/guide/basic/menu', title: '메뉴 사용법', description: '통합 메뉴, 지도·비행·채팅 단축키와 키보드 설정', keywords: '메뉴 단축키 키보드 키변경 N M G H 지도 비행 채팅 워프 상점 거래소' },
-      { href: '/guide/basic/hud', title: 'HUD와 채팅 설정', description: 'J키로 화면 배치·크기·채팅 글자와 단축키 안내 조절', keywords: 'HUD J 설정 배치 편지지 크기 80 투명도 표시 채팅 글자 이모티콘 쿨타임 단축키 숨기기' },
+      { href: '/guide/basic/hud', title: 'HUD와 채팅 설정', description: 'J키 화면 배치·채팅 설정, 공지·귓말 강조와 TAB 생활 레벨', keywords: 'HUD J 설정 배치 편지지 크기 80 투명도 표시 채팅 글자 이모티콘 쿨타임 단축키 숨기기 공지 귓말 강조 알림 TAB 사육사 레벨' },
       { href: '/map', title: '월드 안내', description: '스폰, 마을, 야생, 지옥과 엔더 월드', keywords: '지도 월드 이동 워프 야생 지옥 엔더' },
       { href: '/commands', title: '명령어 모음', description: '자주 쓰는 플레이어 명령어', keywords: '명령 커맨드 도움말' }
     ]
@@ -31,7 +31,7 @@ export const wikiSections: WikiSection[] = [
     eyebrow: 'SETTLEMENT',
     entries: [
       { href: '/guide/basic/village', title: '마을', description: '점유·경작지 한도, 부마을장·금고, 공개 마을과 손님', keywords: '마을 클레임 점유 청크 한도 경작지 농지 출입 권한 프리셋 PVP 바이옴 그룹 조공 세금 부마을장 금고 출금 공개 방문 소개 비행 초대 손님 로그 로그막대기 랭킹' },
-      { href: '/guide/basic/construction', title: '마을 건축', description: '건설 도면, 건차, 가구와 24시간 효과 타워', keywords: '마을 건축 건설 도면 츄르 코인 건차 도구함 원목 묶음 장식 가구 앉기 눕기 중세 시장 주점 효과 타워 나무신 땅의신 24시간 자정 유지비 HybridBuild' },
+      { href: '/guide/basic/construction', title: '마을 건축', description: '건설 도면, 가을 들판 가구와 벽·천장 설치, 24시간 효과 타워', keywords: '마을 건축 건설 도면 츄르 코인 건차 도구함 원목 묶음 장식 가구 앉기 눕기 중세 시장 주점 효과 타워 나무신 땅의신 24시간 자정 유지비 HybridBuild 가을들판 250 벽 천장 풍차 허수아비 건초더미 가랜드' },
       { href: '/guide/basic/storage', title: '자동 창고 정리', description: '투입함과 액자로 품목별 자동 분류, 창고 생성과 관리', keywords: '창고 자동창고 자동정리 창고정리 투입함 상자 큰상자 액자 분류 필터 바닐라 보관 새로고침 일시정지 LifeStorageSorter' },
       { href: '/guide/basic/travel', title: '이동과 홈', description: '개인 홈, 랜덤 이동, 택시 목적지 선택과 엘리베이터', keywords: '홈 셋홈 공개홈 rtp back 택시 상점 강화소 목적지 엘리베이터 이동' },
       { href: '/guide/basic/camera', title: '카메라와 벽 사진', description: '촬영, 필터·편집, 인화와 벽 사진 설치', keywords: '카메라 사진 촬영 필름 인화 벽사진 스티커 필터 줌 churcamera ccamera' },
@@ -39,7 +39,7 @@ export const wikiSections: WikiSection[] = [
       { href: '/guide/basic/mailbox', title: '우편함', description: '아이템 발송·수령, 보관 기간과 시스템 회수품', keywords: '우편 메일 발송 수령 보관함 회수품 만료 입장권 빨간우편함' },
       { href: '/guide/basic/shop', title: '상점과 거래', description: '생활·나무 상점, 후원상품과 추천상자 보상 수령', keywords: '상점 나무상점 황금원목 황금나무 판매 거래소 후원상점 츄르 물물교환 재분배 주문서 마을비행 이용권 요리시세 추천상자 가챠수령 보상' },
       { href: '/guide/basic/marketplace', title: '유저 거래소', description: '판매 등록과 구매 주문, 보관함·정산 이용법', keywords: '거래소 등록 판매 구매주문 삽니다 팝니다 검색 수수료 보관함 정산 에스크로' },
-      { href: '/guide/basic/economy', title: '재화·교환·ATM', description: '물물교환 상인의 네 메뉴, 돈주머니와 츄르 환전', keywords: '돈보내기 돈주머니 송금 pay 재화 물물교환 무지개물고기 금별 생활조각 강화조각 고급화분 작물교환 ATM 츄르 환전' },
+      { href: '/guide/basic/economy', title: '재화·교환·ATM', description: 'NPC 생활 교환소·물물교환 이용, 돈주머니와 츄르 환전', keywords: '돈보내기 돈주머니 송금 pay 재화 물물교환 무지개물고기 금별 생활조각 강화조각 고급화분 작물교환 ATM 츄르 환전 NPC 생활교환소 상인 우클릭' },
       { href: '/guide/basic/requests', title: '의뢰', description: '일일·주간·월간 목표와 새로고침', keywords: '의뢰 퀘스트 일일 주간 월간 새로고침 보상' },
       { href: '/guide/basic/codi', title: '코디와 뽑기', description: '코디 선택권, 보유 필터와 장비 스킨의 내구도 보호', keywords: '코디 치장 뽑기 선택권 보유중 필터 도구스킨 방어구스킨 내구도 등급 외형 복구 추출기 마일리지 모자 날개' },
       { href: '/guide/basic/drawing', title: '그림 그리기', description: '그림 도구·색상환·음영, 작품 관리와 지도 출력', keywords: '그림 ChurPaint 자체 캔버스 저장 지도 작품 붓 에어브러시 그림자 빛 색상환 HEX RGB HSV 색혼합 액자 관람' },
@@ -66,7 +66,7 @@ export const wikiSections: WikiSection[] = [
     title: '생활 콘텐츠',
     eyebrow: 'LIFE CONTENTS',
     entries: [
-      { href: '/life/miner', title: '광부', description: '광석, 광맥, 발광 윤곽선 감지와 액티브 스킬', keywords: '채광 광산 광맥 스캔 윤곽선 광석감지 단축키 각성', icon: 'lifemine.png' },
+      { href: '/life/miner', title: '광부', description: '여섯 채광 스킬, 황금광로 분기와 콤보·충전 블랙홀', keywords: '채광 광산 광맥 광맥파괴 암벽분쇄 광부각성 광부의각성 황금광로 부채꼴 과열 콤보 콤보마스터 충전 블랙홀 단축키 각성', icon: 'lifemine.png' },
       { href: '/life/fisher', title: '어부', description: '낚시 미니게임, 보물과 파츠 제작·관리', keywords: '낚시 물고기 파츠 바늘 줄 릴 수명 옵션 재설정 타이밍 균형 화살표 보물', icon: 'lifefish.png' },
       { href: '/life/farmer', title: '농부', description: '커스텀 작물, 농사 장비, 급수 물탱크와 액티브 스킬', keywords: '농사 작물 씨앗 수확 숙련 경험치 화분 청크 100 제한 계절 봄 여름 가을 겨울 물뿌리개 스프링클러 스프링쿨러 물탱크 급수 자동급수 고정성장 성장속도 신비한수액 철블록 비닐하우스 허수아비 단축키', icon: 'lifefarm.png' },
       { href: '/life/woodcutter', title: '나무꾼', description: '마을 공동 벌목, 묘목 반환·재식재와 일곱 스킬', keywords: '벌목 나무 커스텀 고목 도끼 강인한도끼 목재잔재 숲의분노 되살아나는숲 금빛수관 연속참격 숲의파동 스탯 재식재 묘목 반환 공동벌목 2x2 황금원목 신비한수액 지역활력', icon: 'lifewoodcutter.png' },
@@ -77,7 +77,7 @@ export const wikiSections: WikiSection[] = [
     title: '생산 콘텐츠',
     eyebrow: 'PRODUCTION',
     entries: [
-      { href: '/life/chef', title: '요리사', description: '주방 조작, 냉장고·팬 연결과 열기·손질 보너스', keywords: '생산 요리 주방 손질도마 손질칼 후라이팬 냉장고 재료 공급 자동배출 조리 품질 음식 마나 회복 배부름 뒤집개 보조손 내구성 동시조리 달아오른주방 칼과불의호흡 손질보너스', icon: 'lifecook.png' },
+      { href: '/life/chef', title: '요리사', description: '주방 조작, 한 번 클릭 재료 준비와 비법 양념 설정, 열기·손질 보너스', keywords: '생산 요리 주방 손질도마 손질칼 후라이팬 냉장고 재료 공급 자동배출 조리 품질 음식 마나 회복 배부름 뒤집개 보조손 내구성 동시조리 달아오른주방 칼과불의호흡 손질보너스 재료자동준비 자동투입 비법양념 ON OFF 떡밥', icon: 'lifecook.png' },
       { href: '/life/blacksmith', title: '대장술', description: '제련, 제작, 재료 절약과 추가 결과물', keywords: '생산 대장장이 대장술 제련 제작 화로 모루', icon: 'lifeblacksmith.png' }
     ]
   },
@@ -87,11 +87,11 @@ export const wikiSections: WikiSection[] = [
     entries: [
       { href: '/life/growth', title: '성장 구조', description: '공용 성장, 스탯과 직접·확장·유효 스킬 랭크', keywords: '근로 지식 감각 행운 스탯 투자 포인트 직접20 확장25 유효35 스킬확장 생산', icon: 'lifework.png' },
       { href: '/life/recipes', title: '생활 제작법', description: '재료 자동 배치, 6칸 대기열과 생활 제작법', keywords: '제작법 조합법 재료 자동배치 좌클릭 우클릭 대기열 작업대 흔한 화로 물뿌리개 스프링클러 생활 조각 강화석 큐브 드라코라이트', icon: 'lifeblacksmith.png' },
-      { href: '/life/equipment', title: '장비·강화·큐브', description: '드라코라이트 별 강화 수치와 강화 단계별 큐브 적용등급', keywords: '드라코라이트 소유권 각인 장비스탯 스탯분배 강화석 별강화 장비강화 큐브 재설정 보존 저장잠재등급 적용등급 큐브적용상한 +0 +3 +5 +8 레어 에픽 유니크 레전드리 가열', icon: 'lifesense.png' },
-      { href: '/life/codex', title: '생활 도감', description: '8개 대분류 150종 등록과 영구 보상', keywords: '생활 도감 수집 등록 보상 광부 농부 어부 요리사 나무꾼 생존 기타 방어구 고대도시 시련 고고학 허기 마나 체력', icon: 'lifeknowledge.png' },
+      { href: '/life/equipment', title: '장비·강화·큐브', description: '강화·장비스탯 탭, 야간투시 룬과 슈프림 큐브·이탈 옵션', keywords: '드라코라이트 소유권 각인 장비스탯 스탯분배 강화석 별강화 장비강화 큐브 재설정 보존 저장잠재등급 적용등급 큐브적용상한 +0 +3 +5 +8 레어 에픽 유니크 레전드리 가열 야간투시룬 슈프림 이탈 강화탭 장비스탯탭', icon: 'lifesense.png' },
+      { href: '/life/codex', title: '생활 도감', description: '8개 대분류 150종 수집, 인벤 일괄 등록과 영구 보상', keywords: '생활 도감 수집 등록 보상 광부 농부 어부 요리사 나무꾼 생존 기타 방어구 고대도시 시련 고고학 허기 마나 체력 인벤 일괄등록 한번에등록 카테고리 재클릭 부분등록', icon: 'lifeknowledge.png' },
       { href: '/life/systems', title: '주요 시스템', description: '스킬 랭크, 지역 활력, 강화석 획득과 장비 성장', keywords: '스킬랭크 지역활력 작업대 화로 의뢰 도감 생활조각 파편 강화석 마나 큐브 장비 생산 사육 황금축산물 요일 경험치', icon: 'lifeknowledge.png' },
       { href: '/life/faq', title: '생활·생산 FAQ', description: '생활·생산 콘텐츠 자주 묻는 질문', keywords: '질문 도움 생산' },
-      { href: '/guide/life', title: '생활·생산 통합 가이드', description: '운영진이 실시간으로 갱신하는 생활·생산 안내', keywords: '생활 생산 통합 안내 실시간 가이드' }
+      { href: '/guide/life', title: '생활·생산 통합 가이드', description: '직업 선택부터 요리·도감·장비 성장까지 한눈에 보는 안내', keywords: '생활 생산 통합 안내 가이드 직업 선택 요리 도감 장비 성장' }
     ]
   },
   {
